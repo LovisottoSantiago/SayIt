@@ -30,36 +30,44 @@ public class PhrasePage extends javax.swing.JFrame {
                 setLocation(x - mouseX, y - mouseY);
             }
         });
+        
+        ArrayList<String> sentenceStarters = new ArrayList<>(Arrays.asList(
+            "Stephen King writes", "The Dark Tower rises", "A ghost haunts", 
+            "A child discovers", "A writer struggles", "The clown terrifies", 
+            "A town secrets", "The monster emerges", "A family unravels", 
+            "The hotel beckons", "The wizard casts", "Harry Potter learns", 
+            "Hermione studies", "Ron Weasley jokes", "A spell backfires", 
+            "The owl delivers", "A potion brews", "The broomstick flies", 
+            "Dumbledore advises", "Voldemort plots", "The calculus student solves", 
+            "The derivative measures", "The integral calculates", "A function graphs", 
+            "A limit approaches", "A sequence converges", "The theorem proves", 
+            "An equation balances", "The variable changes", "The curve bends", 
+            "Buenos Aires shines", "An Argentine tango", "A gaucho rides", 
+            "The pampas stretch", "A football match", "The Andes tower", 
+            "A Malbec pours", "The mate circulates", "The asado sizzles", 
+            "San Martin studies", "The glacier calms", "A street artist", 
+            "The plaza fills", "A train travels", "The wine vineyard", 
+            "A mountain trail", "The coastal city", "A river flows", 
+            "The Patagonia wilderness"
+        ));
 
-         ArrayList<String> sentenceStarters = new ArrayList<>(Arrays.asList(
-            "The dog jumps", "The cat sleeps", "A bird sings", "The boy runs",
-            "A girl laughs", "The fish swims", "A baby cries", "The sun shines",
-            "A car drives", "The tree grows", "The dog barks", "The cat purrs",
-            "A bird chirps", "The boy plays", "A girl dances", "The fish dives",
-            "A baby smiles", "The sun sets", "A car honks", "The tree falls",
-            "The dog eats", "The cat drinks", "A bird flies", "The boy jumps",
-            "A girl talks", "The fish hides", "A baby yawns", "The sun rises",
-            "A car stops", "The tree sways", "The dog runs", "The cat watches",
-            "A bird nests", "The boy writes", "A girl paints", "The fish bites",
-            "A baby sleeps", "The sun blazes", "A car speeds", "The tree blooms",
-            "The dog digs", "The cat watches", "A bird watches", "The boy reads",
-            "A girl swims", "The fish swims", "A baby kicks", "The sun shines",
-            "A car cruises", "The tree shades"
-        ));        
         ArrayList<String> sentenceFinishers = new ArrayList<>(Arrays.asList(
-            "over the bed", "in the park", "on the grass", "under the tree",
-            "near the lake", "at the beach", "in the sky", "by the river",
-            "on the road", "at night", "over the hill", "in the house",
-            "on the roof", "under the bridge", "near the school", "at the market",
-            "in the garden", "by the pool", "on the boat", "at sunrise",
-            "over the fence", "in the forest", "on the ground", "under the table",
-            "near the mountain", "at the mall", "in the yard", "by the stream",
-            "on the trail", "at sunset", "over the river", "in the city",
-            "on the pier", "under the bench", "near the ocean", "at the office",
-            "in the field", "by the shore", "on the patio", "at the party",
-            "over the rainbow", "in the shop", "on the stage", "under the sun",
-            "near the farm", "at the station", "in the museum", "by the cliff",
-            "on the dock", "at midday"
+            "in a small town", "in the Overlook Hotel", "under the bed", 
+            "in the haunted house", "in Derry, Maine", "in the eerie woods", 
+            "in the basement", "on the isolated island", "in the dark room", 
+            "at the creepy carnival", "at Hogwarts", "in the Forbidden Forest", 
+            "in the Potions class", "in the Gryffindor common room", "in the Quidditch match", 
+            "in Diagon Alley", "in the Chamber of Secrets", "in the Great Hall", 
+            "at Hogsmeade", "in the Room of Requirement", "during the exam", 
+            "on the coordinate plane", "under the curve", "within the limit", 
+            "in the complex plane", "on the function's graph", "within the series", 
+            "under the theorem", "on the x-axis", "at the point of inflection", 
+            "in the heart of Buenos Aires", "on the dance floor", "across the pampas", 
+            "in the football stadium", "in the Andes", "in the vineyard", 
+            "at the asado", "around the mate circle", "in the shadow of the glacier", 
+            "in the street market", "at the Obelisk", 
+            "through the subway", "on the mountain path", "along the coast", 
+            "near the river delta", "in the Patagonian steppe"
         ));
         
         Phrase myPhrase = new Phrase(sentenceStarters, sentenceFinishers);
