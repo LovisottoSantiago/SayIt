@@ -28,7 +28,7 @@ public class Phrase {
     }
     
 
- // <! ------------------------------------ METHODS ------------------------------------ !/>   
+// <! ------------------------------------ METHODS ------------------------------------ !/>   
 // <! ------------ Generate a random phrase ------------ !/>   
         public String randomPhrase(){
         String start = randomStarter();
