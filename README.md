@@ -1,4 +1,4 @@
-# SayIt: Mejora Tu Pronunciación en Inglés
+# SayIt: Mejora Tu Pronunciación en Inglés (en proceso)
 **SayIt** es una aplicación de escritorio desarrollada en Java diseñada para ayudarte a mejorar tu pronunciación en inglés. La idea es simple pero efectiva: la aplicación genera frases aleatorias que tenés que leer en voz alta. Después, SayIt evalúa tu pronunciación y te da un puntaje. Si cometiste algún error, la aplicación te indicará qué palabra pronunciaste mal y cómo corregirla.
 
 _________________
@@ -17,6 +17,4 @@ Después de leer, SayIt te dará un puntaje y te informará si cometiste errores
 
 _________________
 
-¡Prueba SayIt y lleva tu pronunciación al siguiente nivel!
-
-_________________
+### ¡Probá SayIt y lleva tu pronunciación al siguiente nivel!
