@@ -11,8 +11,9 @@ Pronuncia la frase generada como si estuvieras en una conversación real.
 * Recibe retroalimentación:
 Después de leer, SayIt te dará un puntaje y te informará si cometiste errores de pronunciación.
 
-<img src="https://github.com/user-attachments/assets/bebbd768-0136-47c5-8360-179d76e35c7b" width="600" height="467" align=center>
-
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/bebbd768-0136-47c5-8360-179d76e35c7b" width="600" height="467">
+</div>
 
 
 _________________
