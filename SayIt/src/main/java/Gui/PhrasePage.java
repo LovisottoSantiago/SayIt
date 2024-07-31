@@ -1,9 +1,12 @@
 package Gui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import Logic.Phrase;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PhrasePage extends javax.swing.JFrame {
-
+      
     public PhrasePage() {
        setUndecorated(true);
         initComponents();
@@ -27,6 +30,41 @@ public class PhrasePage extends javax.swing.JFrame {
                 setLocation(x - mouseX, y - mouseY);
             }
         });
+
+         ArrayList<String> sentenceStarters = new ArrayList<>(Arrays.asList(
+            "The dog jumps", "The cat sleeps", "A bird sings", "The boy runs",
+            "A girl laughs", "The fish swims", "A baby cries", "The sun shines",
+            "A car drives", "The tree grows", "The dog barks", "The cat purrs",
+            "A bird chirps", "The boy plays", "A girl dances", "The fish dives",
+            "A baby smiles", "The sun sets", "A car honks", "The tree falls",
+            "The dog eats", "The cat drinks", "A bird flies", "The boy jumps",
+            "A girl talks", "The fish hides", "A baby yawns", "The sun rises",
+            "A car stops", "The tree sways", "The dog runs", "The cat watches",
+            "A bird nests", "The boy writes", "A girl paints", "The fish bites",
+            "A baby sleeps", "The sun blazes", "A car speeds", "The tree blooms",
+            "The dog digs", "The cat watches", "A bird watches", "The boy reads",
+            "A girl swims", "The fish swims", "A baby kicks", "The sun shines",
+            "A car cruises", "The tree shades"
+        ));        
+        ArrayList<String> sentenceFinishers = new ArrayList<>(Arrays.asList(
+            "over the bed", "in the park", "on the grass", "under the tree",
+            "near the lake", "at the beach", "in the sky", "by the river",
+            "on the road", "at night", "over the hill", "in the house",
+            "on the roof", "under the bridge", "near the school", "at the market",
+            "in the garden", "by the pool", "on the boat", "at sunrise",
+            "over the fence", "in the forest", "on the ground", "under the table",
+            "near the mountain", "at the mall", "in the yard", "by the stream",
+            "on the trail", "at sunset", "over the river", "in the city",
+            "on the pier", "under the bench", "near the ocean", "at the office",
+            "in the field", "by the shore", "on the patio", "at the party",
+            "over the rainbow", "in the shop", "on the stage", "under the sun",
+            "near the farm", "at the station", "in the museum", "by the cliff",
+            "on the dock", "at midday"
+        ));
+        
+        Phrase myPhrase = new Phrase(sentenceStarters, sentenceFinishers);
+        starter.setText("\"" + myPhrase.randomStarter());
+        finisher.setText(myPhrase.randomFinisher() + "\"");
     }
     
     @SuppressWarnings("unchecked")
@@ -36,9 +74,9 @@ public class PhrasePage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         audioBtn = new javax.swing.JToggleButton();
         exitBtn = new javax.swing.JButton();
-        firstRow = new javax.swing.JLabel();
+        starter = new javax.swing.JLabel();
         backBtn = new javax.swing.JToggleButton();
-        secondRow = new javax.swing.JLabel();
+        finisher = new javax.swing.JLabel();
         subtitle = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         whiteBackground = new javax.swing.JLabel();
@@ -47,7 +85,6 @@ public class PhrasePage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Say it! Phrase Test");
         setMinimumSize(new java.awt.Dimension(600, 420));
-        setPreferredSize(new java.awt.Dimension(600, 420));
         setResizable(false);
         setSize(new java.awt.Dimension(600, 420));
 
@@ -76,11 +113,11 @@ public class PhrasePage extends javax.swing.JFrame {
         });
         jPanel1.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 12, 40, 40));
 
-        firstRow.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
-        firstRow.setForeground(new java.awt.Color(157, 157, 157));
-        firstRow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        firstRow.setText("\"The quick brown fox jumps");
-        jPanel1.add(firstRow, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 180, 450, -1));
+        starter.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        starter.setForeground(new java.awt.Color(157, 157, 157));
+        starter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        starter.setText(" ");
+        jPanel1.add(starter, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 180, 450, -1));
 
         backBtn.setBackground(new java.awt.Color(255, 255, 255));
         backBtn.setFont(new java.awt.Font("Poppins Black", 0, 48)); // NOI18N
@@ -95,13 +132,13 @@ public class PhrasePage extends javax.swing.JFrame {
                 backBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 80, 40, 20));
+        jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 40, 20));
 
-        secondRow.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
-        secondRow.setForeground(new java.awt.Color(157, 157, 157));
-        secondRow.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        secondRow.setText("over the lazy dog.\"");
-        jPanel1.add(secondRow, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 215, 450, -1));
+        finisher.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        finisher.setForeground(new java.awt.Color(157, 157, 157));
+        finisher.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        finisher.setText(" ");
+        jPanel1.add(finisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 215, 450, -1));
 
         subtitle.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         subtitle.setForeground(new java.awt.Color(0, 0, 0));
@@ -149,16 +186,15 @@ public class PhrasePage extends javax.swing.JFrame {
     private javax.swing.JToggleButton backBtn;
     private javax.swing.JLabel background;
     private javax.swing.JButton exitBtn;
-    private javax.swing.JLabel firstRow;
+    private javax.swing.JLabel finisher;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel secondRow;
+    private javax.swing.JLabel starter;
     private javax.swing.JLabel subtitle;
     private javax.swing.JLabel title;
     private javax.swing.JLabel whiteBackground;
     // End of variables declaration//GEN-END:variables
     private int mouseX;
     private int mouseY;
-
 
 
 }
