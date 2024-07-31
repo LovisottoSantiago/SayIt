@@ -6,10 +6,14 @@ _________________
 ## ¿Cómo funciona?
 * Genera una frase:
 Solo tenés que hacer clic en el botón para que SayIt te dé una nueva frase al azar.
-* Lee en voz alta:
+* Leé en voz alta:
 Pronuncia la frase generada como si estuvieras en una conversación real.
 * Recibe retroalimentación:
 Después de leer, SayIt te dará un puntaje y te informará si cometiste errores de pronunciación.
+
+![image](https://github.com/user-attachments/assets/bebbd768-0136-47c5-8360-179d76e35c7b)
+
+
 
 _________________
 
