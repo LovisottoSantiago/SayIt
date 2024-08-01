@@ -6,13 +6,8 @@ public class SayIt {
 
     public static void main(String[] args) {        
         System.out.println("Hello World!");
+        //startPhraseScreen();
         
-        startPhraseScreen();
-        
-       
-        //VoiceRecognizer voice = new VoiceRecognizer();
-        
-        //voice.startRecognition();
         
     }
     
@@ -24,4 +19,10 @@ public class SayIt {
         phrasePage.setLocationRelativeTo(null);
     }
     
+    // <! ------------ Start test screen  ------------ !/>    
+    public static void startTestScreen(){
+        TestScreen testPage = new TestScreen();
+        testPage.setVisible(true);
+        testPage.setLocationRelativeTo(null);
+    }
 }
