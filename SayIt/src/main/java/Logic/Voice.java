@@ -1,19 +1,17 @@
 package Logic;
 
-import java.io.IOException;
 import edu.cmu.sphinx.api.Configuration;
 import edu.cmu.sphinx.api.LiveSpeechRecognizer;
 import edu.cmu.sphinx.api.SpeechResult;
+import java.io.IOException;
 
 public final class Voice {
-
-    private LiveSpeechRecognizer speechRecognizer;
-
+    public LiveSpeechRecognizer speechRecognizer;
     public Voice() {
         initializeRecognizer();
     }
 
-    private void initializeRecognizer() {
+    public void initializeRecognizer() {
         Configuration config = new Configuration();
         config.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
         config.setDictionaryPath("src/main/resources/Dictionary/0924.dic");
@@ -21,35 +19,21 @@ public final class Voice {
 
         try {
             speechRecognizer = new LiveSpeechRecognizer(config);
-            speechRecognizer.startRecognition(true);
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
-    public void recognizeSpeech() {
-        if (speechRecognizer == null) {
-            System.err.println("Speech recognizer is not initialized.");
-            return;
-        }
-
-        SpeechResult speechResult;
-        try {
-            while ((speechResult = speechRecognizer.getResult()) != null) {
-                String voiceCommand = speechResult.getHypothesis();
-                System.out.println("You said: " + voiceCommand);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            stopRecognition();
-        }
+    public String recognizeSpeech() {
+        String voiceCommand = "";
+        speechRecognizer.startRecognition(true);
+        SpeechResult speechResult = speechRecognizer.getResult();
+         if (speechResult != null) {
+            voiceCommand = speechResult.getHypothesis();
+         }    
+        speechRecognizer.stopRecognition();
+        return voiceCommand;
     }
-
-    private void stopRecognition() {
-        if (speechRecognizer != null) {
-            speechRecognizer.stopRecognition();
-            speechRecognizer = null;
-        }
-    }
+    
+    
+    
 }

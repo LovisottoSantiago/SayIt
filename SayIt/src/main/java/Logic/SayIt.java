@@ -1,13 +1,14 @@
 package Logic;
 
 import Gui.PhrasePage;
+import Gui.TestScreen;
 
 public class SayIt {
 
     public static void main(String[] args) {        
         System.out.println("Hello World!");
         //startPhraseScreen();
-        
+        startTestScreen();
         
     }
     
