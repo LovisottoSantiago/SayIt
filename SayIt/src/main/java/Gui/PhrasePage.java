@@ -52,27 +52,34 @@ public class PhrasePage extends javax.swing.JFrame {
         ));
 
         ArrayList<String> sentenceFinishers = new ArrayList<>(Arrays.asList(
-            "in a small town", "in the Overlook Hotel", "under the bed", 
-            "in the haunted house", "in Derry, Maine", "in the eerie woods", 
-            "in the basement", "on the isolated island", "in the dark room", 
-            "at the creepy carnival", "at Hogwarts", "in the Forbidden Forest", 
-            "in the Potions class", "in the Gryffindor common room", "in the Quidditch match", 
-            "in Diagon Alley", "in the Chamber of Secrets", "in the Great Hall", 
-            "at Hogsmeade", "in the Room of Requirement", "during the exam", 
-            "on the coordinate plane", "under the curve", "within the limit", 
-            "in the complex plane", "on the function's graph", "within the series", 
-            "under the theorem", "on the x-axis", "at the point of inflection", 
-            "in the heart of Buenos Aires", "on the dance floor", "across the pampas", 
-            "in the football stadium", "in the Andes", "in the vineyard", 
-            "at the asado", "around the mate circle", "in the shadow of the glacier", 
-            "in the street market", "at the Obelisk", 
-            "through the subway", "on the mountain path", "along the coast", 
-            "near the river delta", "in the Patagonian steppe"
+            "in a small town.", "in the Overlook Hotel.", "under the bed.", 
+            "in the haunted house.", "in Derry, Maine.", "in the eerie woods.", 
+            "in the basement.", "on the isolated island.", "in the dark room.", 
+            "at the creepy carnival.", "at Hogwarts.", "in the Forbidden Forest.", 
+            "in the Potions class.", "in the Gryffindor common room.", "in the Quidditch match.", 
+            "in Diagon Alley.", "in the Chamber of Secrets.", "in the Great Hall.", 
+            "at Hogsmeade.", "in the Room of Requirement.", "during the exam.", 
+            "on the coordinate plane.", "under the curve.", "within the limit.", 
+            "in the complex plane.", "on the function's graph.", "within the series.", 
+            "under the theorem.", "on the x-axis.", "at the point of inflection.", 
+            "in the heart of Buenos Aires.", "on the dance floor.", "across the pampas.", 
+            "in the football stadium.", "in the Andes.", "in the vineyard.", 
+            "at the asado.", "around the mate circle.", "in the shadow of the glacier.", 
+            "in the street market.", "at the Obelisk.", 
+            "through the subway.", "on the mountain path.", "along the coast.", 
+            "near the river delta.", "in the Patagonian steppe."
         ));
         
         Phrase myPhrase = new Phrase(sentenceStarters, sentenceFinishers);
-        starter.setText("\"" + myPhrase.randomStarter());
-        finisher.setText(myPhrase.randomFinisher() + "\"");
+        String sentenceStarter = myPhrase.randomStarter();
+        String sentenceFinisher = myPhrase.randomFinisher();
+        
+        String fullSentence = sentenceStarter + " " + sentenceFinisher;
+        String sentence = "<html><div style='text-align: center;'><span style='color: black;'>\"</span><span style='color: rgb(157,157,157);'>" + sentenceStarter + "<br/>" + sentenceFinisher + "</span><span style='color: black;'>\"</span></div></html>";
+        sentenceLabel.setText(sentence);
+        System.out.println(fullSentence);
+        
+
     }
     
     @SuppressWarnings("unchecked")
@@ -80,11 +87,11 @@ public class PhrasePage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        speakerBtn = new javax.swing.JToggleButton();
         audioBtn = new javax.swing.JToggleButton();
         exitBtn = new javax.swing.JButton();
-        starter = new javax.swing.JLabel();
+        sentenceLabel = new javax.swing.JLabel();
         backBtn = new javax.swing.JToggleButton();
-        finisher = new javax.swing.JLabel();
         subtitle = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         whiteBackground = new javax.swing.JLabel();
@@ -99,13 +106,31 @@ public class PhrasePage extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 420));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        speakerBtn.setBackground(new java.awt.Color(255, 255, 255));
+        speakerBtn.setForeground(new java.awt.Color(255, 255, 255));
+        speakerBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/PhrasePage/speakerBtn.png"))); // NOI18N
+        speakerBtn.setBorder(null);
+        speakerBtn.setBorderPainted(false);
+        speakerBtn.setContentAreaFilled(false);
+        speakerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                speakerBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(speakerBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 250, 50, 50));
+
         audioBtn.setBackground(new java.awt.Color(255, 255, 255));
         audioBtn.setForeground(new java.awt.Color(255, 255, 255));
-        audioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/PhrasePage/audioBtn.png"))); // NOI18N
+        audioBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/PhrasePage/audioGradientBtn.png"))); // NOI18N
         audioBtn.setBorder(null);
         audioBtn.setBorderPainted(false);
         audioBtn.setContentAreaFilled(false);
-        jPanel1.add(audioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 290, 50, 50));
+        audioBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                audioBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(audioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 250, 50, 50));
 
         exitBtn.setFont(new java.awt.Font("Poppins Black", 0, 36)); // NOI18N
         exitBtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,11 +146,11 @@ public class PhrasePage extends javax.swing.JFrame {
         });
         jPanel1.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 12, 40, 40));
 
-        starter.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
-        starter.setForeground(new java.awt.Color(157, 157, 157));
-        starter.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        starter.setText(" ");
-        jPanel1.add(starter, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 180, 450, -1));
+        sentenceLabel.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        sentenceLabel.setForeground(new java.awt.Color(157, 157, 157));
+        sentenceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        sentenceLabel.setText(" ");
+        jPanel1.add(sentenceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 160, 450, -1));
 
         backBtn.setBackground(new java.awt.Color(255, 255, 255));
         backBtn.setFont(new java.awt.Font("Poppins Black", 0, 48)); // NOI18N
@@ -141,12 +166,6 @@ public class PhrasePage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 40, 20));
-
-        finisher.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
-        finisher.setForeground(new java.awt.Color(157, 157, 157));
-        finisher.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        finisher.setText(" ");
-        jPanel1.add(finisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 215, 450, -1));
 
         subtitle.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         subtitle.setForeground(new java.awt.Color(0, 0, 0));
@@ -188,15 +207,23 @@ public class PhrasePage extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_exitBtnActionPerformed
 
+    private void audioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audioBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_audioBtnActionPerformed
+
+    private void speakerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speakerBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_speakerBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton audioBtn;
     private javax.swing.JToggleButton backBtn;
     private javax.swing.JLabel background;
     private javax.swing.JButton exitBtn;
-    private javax.swing.JLabel finisher;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel starter;
+    private javax.swing.JLabel sentenceLabel;
+    private javax.swing.JToggleButton speakerBtn;
     private javax.swing.JLabel subtitle;
     private javax.swing.JLabel title;
     private javax.swing.JLabel whiteBackground;

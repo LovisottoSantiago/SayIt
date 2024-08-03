@@ -42,6 +42,7 @@ public class TestScreen extends javax.swing.JFrame {
         audioBtn = new javax.swing.JToggleButton();
         exitBtn = new javax.swing.JButton();
         userWord = new javax.swing.JLabel();
+        belowText = new javax.swing.JLabel();
         backBtn = new javax.swing.JToggleButton();
         subtitle = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
@@ -87,8 +88,14 @@ public class TestScreen extends javax.swing.JFrame {
         userWord.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         userWord.setForeground(new java.awt.Color(157, 157, 157));
         userWord.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        userWord.setText(" ");
+        userWord.setText("\"This is an example of a");
         jPanel1.add(userWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 180, 450, -1));
+
+        belowText.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        belowText.setForeground(new java.awt.Color(157, 157, 157));
+        belowText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        belowText.setText("microphone testing phrase.\"");
+        jPanel1.add(belowText, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 215, 450, -1));
 
         backBtn.setBackground(new java.awt.Color(255, 255, 255));
         backBtn.setFont(new java.awt.Font("Poppins Black", 0, 48)); // NOI18N
@@ -108,7 +115,7 @@ public class TestScreen extends javax.swing.JFrame {
         subtitle.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         subtitle.setForeground(new java.awt.Color(0, 0, 0));
         subtitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        subtitle.setText("Read with calm the next phrase:");
+        subtitle.setText("Say something to test your microphone...");
         jPanel1.add(subtitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 115, -1, -1));
 
         title.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
@@ -120,7 +127,7 @@ public class TestScreen extends javax.swing.JFrame {
         whiteBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/PhrasePage/whiteBackground.png"))); // NOI18N
         jPanel1.add(whiteBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 420));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/PhrasePage/background.png"))); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/TestScreen/testBackground.png"))); // NOI18N
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 420));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -149,7 +156,8 @@ public class TestScreen extends javax.swing.JFrame {
     private void audioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audioBtnActionPerformed
         // Disable the button to prevent multiple clicks
         audioBtn.setEnabled(false);
-
+        userWord.setText("");
+        belowText.setText("");
         // Create a new thread to handle voice recognition
         new Thread(() -> {
             
@@ -158,7 +166,7 @@ public class TestScreen extends javax.swing.JFrame {
 
             javax.swing.SwingUtilities.invokeLater(() -> {
                 if (recognizedText != null && !recognizedText.isEmpty()) {
-                    userWord.setText(recognizedText);
+                    userWord.setText("\"" + recognizedText + "\"");
                 } else {
                     userWord.setText("No speech recognized.");
                 }                
@@ -174,6 +182,7 @@ public class TestScreen extends javax.swing.JFrame {
     private javax.swing.JToggleButton audioBtn;
     private javax.swing.JToggleButton backBtn;
     private javax.swing.JLabel background;
+    private javax.swing.JLabel belowText;
     private javax.swing.JButton exitBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel subtitle;
