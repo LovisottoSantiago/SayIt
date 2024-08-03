@@ -30,8 +30,12 @@ public final class Voice {
          if (speechResult != null) {
             voiceCommand = speechResult.getHypothesis();
          }    
-        speechRecognizer.stopRecognition();
+        //speechRecognizer.stopRecognition();
         return voiceCommand;
+    }
+    
+    public void stop(){
+        speechRecognizer.stopRecognition();
     }
     
     

@@ -4,10 +4,11 @@ import org.apache.commons.text.similarity.LevenshteinDistance;
 
 public class ScoreSystem {
 
-    private static final int THRESHOLD = 3; // Adjust this value as needed
+    private final int threshold;
 
-    public ScoreSystem() {
-        System.out.println("Score system loaded");
+    public ScoreSystem(int threshold) {
+        this.threshold = threshold;
+        System.out.println("Score system loaded with threshold: " + threshold);
     }
     
     public boolean returnResult(String sentenceText, String sentenceInput) {
@@ -15,6 +16,6 @@ public class ScoreSystem {
         int editDistance = distance.apply(sentenceText.toLowerCase(), sentenceInput.toLowerCase());
         
         // Check if the edit distance is within the acceptable threshold
-        return editDistance <= THRESHOLD;
+        return editDistance <= threshold;
     }
 }

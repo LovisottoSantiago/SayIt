@@ -8,9 +8,21 @@ public class SayIt {
     public static void main(String[] args) {        
         System.out.println("Hello World!");
         
-        //startPhraseScreen();
+        startPhraseScreen();
         //startTestScreen();
         
+        
+        
+        /* Testing
+        Voice voice = new Voice();
+        String rta = voice.recognizeSpeech();
+        String aaa = "BUT THERE IS A LIMIT";
+        
+        ScoreSystem score = new ScoreSystem();
+        boolean omg = score.returnResult(aaa, rta);
+        
+        System.out.println(omg);
+        */
     }
     
      // <! ------------------------------------ METHODS ------------------------------------ !/>   

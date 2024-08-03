@@ -2,7 +2,9 @@ package Gui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import Logic.Phrase;
+import Logic.ScoreSystem;
 import Logic.TextTTS;
+import Logic.Voice;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -96,7 +98,6 @@ public class PhrasePage extends javax.swing.JFrame {
         exitBtn = new javax.swing.JButton();
         sentenceLabel = new javax.swing.JLabel();
         backBtn = new javax.swing.JToggleButton();
-        resultLabel = new javax.swing.JLabel();
         spellCheck = new javax.swing.JLabel();
         subtitle = new javax.swing.JLabel();
         nextBtn = new javax.swing.JButton();
@@ -174,12 +175,6 @@ public class PhrasePage extends javax.swing.JFrame {
         });
         jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 80, 40, 20));
 
-        resultLabel.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
-        resultLabel.setForeground(new java.awt.Color(0, 0, 0));
-        resultLabel.setText(" ");
-        resultLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel1.add(resultLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 325, -1, -1));
-
         spellCheck.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
         spellCheck.setForeground(new java.awt.Color(0, 0, 0));
         spellCheck.setText("Result:");
@@ -225,15 +220,46 @@ public class PhrasePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
+              
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
         this.dispose();
     }//GEN-LAST:event_exitBtnActionPerformed
 
+    Voice voice = new Voice();
+    ScoreSystem score = new ScoreSystem(15);
+
     private void audioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audioBtnActionPerformed
-        // TODO add your handling code here:
+                // Disable the button to prevent multiple clicks
+        String fullSentence = sentenceStarter + sentenceFinisher;
+        audioBtn.setEnabled(false);
+        // Create a new thread to handle voice recognition
+        new Thread(() -> {
+            
+            spellCheck.setText("Recording...");
+            String recognizedText = voice.recognizeSpeech();
+
+            javax.swing.SwingUtilities.invokeLater(() -> {
+                if (recognizedText != null && !recognizedText.isEmpty()) {
+                    
+                    //Logic to evaluate your answer
+                    boolean result = score.returnResult(fullSentence, recognizedText);
+                    if (result){
+                       spellCheck.setText("SUCCESS!");
+                       voice.stop();
+                    }
+                    else{
+                        spellCheck.setText("FALSE!");
+                        voice.stop();
+                    }
+                    
+                } else {
+                    spellCheck.setText("ERROR");
+                }                
+                audioBtn.setEnabled(true);
+            });
+        }).start();
     }//GEN-LAST:event_audioBtnActionPerformed
 
     private void speakerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speakerBtnActionPerformed
@@ -263,7 +289,6 @@ public class PhrasePage extends javax.swing.JFrame {
     private javax.swing.JButton exitBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton nextBtn;
-    private javax.swing.JLabel resultLabel;
     private javax.swing.JLabel sentenceLabel;
     private javax.swing.JToggleButton speakerBtn;
     private javax.swing.JLabel spellCheck;
