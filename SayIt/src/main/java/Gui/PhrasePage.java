@@ -2,16 +2,21 @@ package Gui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import Logic.Phrase;
+import Logic.TextTTS;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PhrasePage extends javax.swing.JFrame {
-      
+    public String sentenceStarter;
+    public String sentenceFinisher;
+    public TextTTS speaker;
+    
     public PhrasePage() {
        setUndecorated(true);
         initComponents();
         setSize(600, 420);
         setResizable(false);
+        speaker = new TextTTS();
 
         // Add mouse listeners to enable window dragging
         jPanel1.addMouseListener(new MouseAdapter() {
@@ -71,16 +76,15 @@ public class PhrasePage extends javax.swing.JFrame {
         ));
         
         Phrase myPhrase = new Phrase(sentenceStarters, sentenceFinishers);
-        String sentenceStarter = myPhrase.randomStarter();
-        String sentenceFinisher = myPhrase.randomFinisher();
-        
-        String fullSentence = sentenceStarter + " " + sentenceFinisher;
+        sentenceStarter = myPhrase.randomStarter();
+        sentenceFinisher = myPhrase.randomFinisher();
+                
         String sentence = "<html><div style='text-align: center;'><span style='color: black;'>\"</span><span style='color: rgb(157,157,157);'>" + sentenceStarter + "<br/>" + sentenceFinisher + "</span><span style='color: black;'>\"</span></div></html>";
         sentenceLabel.setText(sentence);
-        System.out.println(fullSentence);
         
 
     }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -92,7 +96,10 @@ public class PhrasePage extends javax.swing.JFrame {
         exitBtn = new javax.swing.JButton();
         sentenceLabel = new javax.swing.JLabel();
         backBtn = new javax.swing.JToggleButton();
+        resultLabel = new javax.swing.JLabel();
+        spellCheck = new javax.swing.JLabel();
         subtitle = new javax.swing.JLabel();
+        nextBtn = new javax.swing.JButton();
         title = new javax.swing.JLabel();
         whiteBackground = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
@@ -132,7 +139,7 @@ public class PhrasePage extends javax.swing.JFrame {
         });
         jPanel1.add(audioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 250, 50, 50));
 
-        exitBtn.setFont(new java.awt.Font("Poppins Black", 0, 36)); // NOI18N
+        exitBtn.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
         exitBtn.setForeground(new java.awt.Color(255, 255, 255));
         exitBtn.setText("X");
         exitBtn.setBorder(null);
@@ -144,7 +151,7 @@ public class PhrasePage extends javax.swing.JFrame {
                 exitBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(547, 12, 40, 40));
+        jPanel1.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 15, 25, 25));
 
         sentenceLabel.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         sentenceLabel.setForeground(new java.awt.Color(157, 157, 157));
@@ -165,13 +172,31 @@ public class PhrasePage extends javax.swing.JFrame {
                 backBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 40, 20));
+        jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(474, 80, 40, 20));
+
+        resultLabel.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
+        resultLabel.setForeground(new java.awt.Color(0, 0, 0));
+        resultLabel.setText(" ");
+        resultLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel1.add(resultLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 325, -1, -1));
+
+        spellCheck.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
+        spellCheck.setForeground(new java.awt.Color(0, 0, 0));
+        spellCheck.setText("Result:");
+        spellCheck.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jPanel1.add(spellCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 325, -1, -1));
 
         subtitle.setFont(new java.awt.Font("Poppins SemiBold", 0, 16)); // NOI18N
         subtitle.setForeground(new java.awt.Color(0, 0, 0));
         subtitle.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         subtitle.setText("Read with calm the next phrase:");
         jPanel1.add(subtitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 115, -1, -1));
+
+        nextBtn.setBackground(new java.awt.Color(255, 255, 255));
+        nextBtn.setForeground(new java.awt.Color(255, 255, 255));
+        nextBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/PhrasePage/nextBtn.png"))); // NOI18N
+        nextBtn.setBorder(null);
+        jPanel1.add(nextBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 325, 30, 30));
 
         title.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
         title.setForeground(new java.awt.Color(0, 0, 0));
@@ -212,7 +237,22 @@ public class PhrasePage extends javax.swing.JFrame {
     }//GEN-LAST:event_audioBtnActionPerformed
 
     private void speakerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speakerBtnActionPerformed
-        // TODO add your handling code here:
+            // Combine sentenceStarter and sentenceFinisher into a single string
+        String phrase = sentenceStarter + sentenceFinisher;
+
+        // Check for non-null and non-empty phrase
+        if (phrase != null && !phrase.trim().isEmpty()) {
+            // Use a background thread to handle the TTS operation
+            new Thread(() -> {
+                try {
+                    speaker.Talk(phrase);
+                } catch (Exception e) {
+                    System.err.println("Error during TTS operation: " + e.getMessage());
+                }
+            }).start();
+        } else {
+            System.err.println("Phrase is empty or null.");
+        }
     }//GEN-LAST:event_speakerBtnActionPerformed
 
 
@@ -222,8 +262,11 @@ public class PhrasePage extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JButton exitBtn;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton nextBtn;
+    private javax.swing.JLabel resultLabel;
     private javax.swing.JLabel sentenceLabel;
     private javax.swing.JToggleButton speakerBtn;
+    private javax.swing.JLabel spellCheck;
     private javax.swing.JLabel subtitle;
     private javax.swing.JLabel title;
     private javax.swing.JLabel whiteBackground;
