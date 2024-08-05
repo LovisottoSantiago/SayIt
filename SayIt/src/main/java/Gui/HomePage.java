@@ -299,7 +299,7 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
-        this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_exitBtnActionPerformed
 
     private void entertainmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entertainmentBtnActionPerformed
@@ -324,10 +324,7 @@ public class HomePage extends javax.swing.JFrame {
 
     
     private void startBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBtnActionPerformed
-        //System.out.println(startSelected);
-        PhrasePage phrasePage = new PhrasePage(sentenceStarters, sentenceFinishers);
-        phrasePage.setVisible(true);
-        phrasePage.setLocationRelativeTo(null);
+        openPhrasePage();
     }//GEN-LAST:event_startBtnActionPerformed
 
 
@@ -354,6 +351,10 @@ public class HomePage extends javax.swing.JFrame {
     private int mouseX;
     private int mouseY;
 
-
+    public void openPhrasePage(){
+        PhrasePage phrasePage = new PhrasePage(sentenceStarters, sentenceFinishers);
+        phrasePage.setVisible(true);
+        phrasePage.setLocationRelativeTo(null);
+    }
 
 }

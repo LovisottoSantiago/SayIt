@@ -6,7 +6,6 @@ import Logic.ScoreSystem;
 import Logic.TextTTS;
 import Logic.Voice;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PhrasePage extends javax.swing.JFrame {
     public String sentenceStarter;
@@ -18,12 +17,16 @@ public class PhrasePage extends javax.swing.JFrame {
     
     
     public PhrasePage(ArrayList<String> sentenceStarters, ArrayList<String> sentenceFinishers) {
-       setUndecorated(true);
+        setUndecorated(true);
         initComponents();
         setSize(600, 420);
         setResizable(false);
         speaker = new TextTTS();
 
+        // Initialize sentence lists
+        this.sentenceStarters = sentenceStarters;
+        this.sentenceFinishers = sentenceFinishers;
+        
         // Add mouse listeners to enable window dragging
         jPanel1.addMouseListener(new MouseAdapter() {
             @Override
@@ -42,17 +45,14 @@ public class PhrasePage extends javax.swing.JFrame {
             }
         });                  
                 
-        Phrase myPhrase = new Phrase(sentenceStarters, sentenceFinishers);
-        sentenceStarter = myPhrase.randomStarter();
-        sentenceFinisher = myPhrase.randomFinisher();
-                
-        sentence = "<html><div style='text-align: center;'><span style='color: black;'>\"</span><span style='color: rgb(157,157,157);'>" + sentenceStarter + "<br/>" + sentenceFinisher + "</span><span style='color: black;'>\"</span></div></html>";
-        sentenceLabel.setText(sentence);
+       
         
+        // Set initial sentence
+        updateSentence();
 
     }
-    
-    
+
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -175,25 +175,22 @@ public class PhrasePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        this.dispose();
+        this.dispose();      
     }//GEN-LAST:event_backBtnActionPerformed
 
     Voice voice = new Voice();
     ScoreSystem score = new ScoreSystem(15);
 
     private void audioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audioBtnActionPerformed
-                // Disable the button to prevent multiple clicks
+         // Disable the button to prevent multiple clicks
         String fullSentence = sentenceStarter + sentenceFinisher;
         audioBtn.setEnabled(false);
         // Create a new thread to handle voice recognition
-        new Thread(() -> {
-            
+        new Thread(() -> {            
             spellCheck.setText("Recording...");
             String recognizedText = voice.recognizeSpeech();
-
             javax.swing.SwingUtilities.invokeLater(() -> {
-                if (recognizedText != null && !recognizedText.isEmpty()) {
-                    
+                if (recognizedText != null && !recognizedText.isEmpty()) {                    
                     //Logic to evaluate your answer
                     boolean result = score.returnResult(fullSentence, recognizedText);
                     if (result){
@@ -205,8 +202,7 @@ public class PhrasePage extends javax.swing.JFrame {
                         spellCheck.setText("<html><span style='color: rgb(255,0,0);'>" + "FALSE!"  + "</span></html>");
                         //spellCheck.setText("FALSE!");
                         voice.stop();
-                    }
-                    
+                    }                    
                 } else {
                     spellCheck.setText("ERROR");
                 }                
@@ -236,15 +232,7 @@ public class PhrasePage extends javax.swing.JFrame {
 
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
-        /*
-        new Thread(() -> {
-            Phrase myPhrase = new Phrase(sentenceStarters, sentenceFinishers);
-            sentenceStarter = myPhrase.randomStarter();
-            sentenceFinisher = myPhrase.randomFinisher();
-            sentence = "<html><div style='text-align: center;'><span style='color: black;'>\"</span><span style='color: rgb(157,157,157);'>" + sentenceStarter + "<br/>" + sentenceFinisher + "</span><span style='color: black;'>\"</span></div></html>";
-            sentenceLabel.setText(sentence);       
-        }).start();
-         */
+        updateSentence();
     }//GEN-LAST:event_nextBtnActionPerformed
 
 
@@ -264,5 +252,12 @@ public class PhrasePage extends javax.swing.JFrame {
     private int mouseX;
     private int mouseY;
 
+     private void updateSentence() {
+        Phrase myPhrase = new Phrase(sentenceStarters, sentenceFinishers);
+        sentenceStarter = myPhrase.randomStarter();
+        sentenceFinisher = myPhrase.randomFinisher();
+        sentence = "<html><div style='text-align: center;'><span style='color: black;'>\"</span><span style='color: rgb(157,157,157);'>" + sentenceStarter + "<br/>" + sentenceFinisher + "</span><span style='color: black;'>\"</span></div></html>";
+        sentenceLabel.setText(sentence);
+    }
 
 }
