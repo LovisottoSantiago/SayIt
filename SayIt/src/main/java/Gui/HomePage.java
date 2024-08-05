@@ -275,7 +275,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Poppins SemiBold", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Select a topic and");
+        jLabel3.setText("Choose the topic and");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 257, 190, -1));
 
         startBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/HomePage/startBg.png"))); // NOI18N
