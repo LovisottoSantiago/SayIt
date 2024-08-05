@@ -12,8 +12,12 @@ public class PhrasePage extends javax.swing.JFrame {
     public String sentenceStarter;
     public String sentenceFinisher;
     public TextTTS speaker;
+    public String sentence;
+    public ArrayList<String> sentenceStarters;
+    public ArrayList<String> sentenceFinishers;
     
-    public PhrasePage() {
+    
+    public PhrasePage(ArrayList<String> sentenceStarters, ArrayList<String> sentenceFinishers) {
        setUndecorated(true);
         initComponents();
         setSize(600, 420);
@@ -36,52 +40,13 @@ public class PhrasePage extends javax.swing.JFrame {
                 int y = evt.getYOnScreen();
                 setLocation(x - mouseX, y - mouseY);
             }
-        });
-        
-        ArrayList<String> sentenceStarters = new ArrayList<>(Arrays.asList(
-            "Stephen King writes", "The Dark Tower rises", "A ghost haunts", 
-            "A child discovers", "A writer struggles", "The clown terrifies", 
-            "A town secrets", "The monster emerges", "A family unravels", 
-            "The hotel beckons", "The wizard casts", "Harry Potter learns", 
-            "Hermione studies", "Ron Weasley jokes", "A spell backfires", 
-            "The owl delivers", "A potion brews", "The broomstick flies", 
-            "Dumbledore advises", "Voldemort plots", "The calculus student solves", 
-            "The derivative measures", "The integral calculates", "A function graphs", 
-            "A limit approaches", "A sequence converges", "The theorem proves", 
-            "An equation balances", "The variable changes", "The curve bends", 
-            "Buenos Aires shines", "An Argentine tango", "A gaucho rides", 
-            "The pampas stretch", "A football match", "The Andes tower", 
-            "A Malbec pours", "The mate circulates", "The asado sizzles", 
-            "San Martin studies", "The glacier calms", "A street artist", 
-            "The plaza fills", "A train travels", "The wine vineyard", 
-            "A mountain trail", "The coastal city", "A river flows", 
-            "The Patagonia wilderness"
-        ));
-
-        ArrayList<String> sentenceFinishers = new ArrayList<>(Arrays.asList(
-            "in a small town.", "in the Overlook Hotel.", "under the bed.", 
-            "in the haunted house.", "in Derry, Maine.", "in the eerie woods.", 
-            "in the basement.", "on the isolated island.", "in the dark room.", 
-            "at the creepy carnival.", "at Hogwarts.", "in the Forbidden Forest.", 
-            "in the Potions class.", "in the Gryffindor common room.", "in the Quidditch match.", 
-            "in Diagon Alley.", "in the Chamber of Secrets.", "in the Great Hall.", 
-            "at Hogsmeade.", "in the Room of Requirement.", "during the exam.", 
-            "on the coordinate plane.", "under the curve.", "within the limit.", 
-            "in the complex plane.", "on the function's graph.", "within the series.", 
-            "under the theorem.", "on the x-axis.", "at the point of inflection.", 
-            "in the heart of Buenos Aires.", "on the dance floor.", "across the pampas.", 
-            "in the football stadium.", "in the Andes.", "in the vineyard.", 
-            "at the asado.", "around the mate circle.", "in the shadow of the glacier.", 
-            "in the street market.", "at the Obelisk.", 
-            "through the subway.", "on the mountain path.", "along the coast.", 
-            "near the river delta.", "in the Patagonian steppe."
-        ));
-        
+        });                  
+                
         Phrase myPhrase = new Phrase(sentenceStarters, sentenceFinishers);
         sentenceStarter = myPhrase.randomStarter();
         sentenceFinisher = myPhrase.randomFinisher();
                 
-        String sentence = "<html><div style='text-align: center;'><span style='color: black;'>\"</span><span style='color: rgb(157,157,157);'>" + sentenceStarter + "<br/>" + sentenceFinisher + "</span><span style='color: black;'>\"</span></div></html>";
+        sentence = "<html><div style='text-align: center;'><span style='color: black;'>\"</span><span style='color: rgb(157,157,157);'>" + sentenceStarter + "<br/>" + sentenceFinisher + "</span><span style='color: black;'>\"</span></div></html>";
         sentenceLabel.setText(sentence);
         
 
@@ -95,7 +60,6 @@ public class PhrasePage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         speakerBtn = new javax.swing.JToggleButton();
         audioBtn = new javax.swing.JToggleButton();
-        exitBtn = new javax.swing.JButton();
         sentenceLabel = new javax.swing.JLabel();
         backBtn = new javax.swing.JToggleButton();
         spellCheck = new javax.swing.JLabel();
@@ -140,20 +104,6 @@ public class PhrasePage extends javax.swing.JFrame {
         });
         jPanel1.add(audioBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 250, 50, 50));
 
-        exitBtn.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
-        exitBtn.setForeground(new java.awt.Color(255, 255, 255));
-        exitBtn.setText("X");
-        exitBtn.setBorder(null);
-        exitBtn.setBorderPainted(false);
-        exitBtn.setContentAreaFilled(false);
-        exitBtn.setFocusPainted(false);
-        exitBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitBtnActionPerformed(evt);
-            }
-        });
-        jPanel1.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 15, 25, 25));
-
         sentenceLabel.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         sentenceLabel.setForeground(new java.awt.Color(157, 157, 157));
         sentenceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -191,6 +141,11 @@ public class PhrasePage extends javax.swing.JFrame {
         nextBtn.setForeground(new java.awt.Color(255, 255, 255));
         nextBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/PhrasePage/nextBtn.png"))); // NOI18N
         nextBtn.setBorder(null);
+        nextBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextBtnActionPerformed(evt);
+            }
+        });
         jPanel1.add(nextBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(475, 325, 30, 30));
 
         title.setFont(new java.awt.Font("Poppins", 1, 20)); // NOI18N
@@ -220,12 +175,8 @@ public class PhrasePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-              
-    }//GEN-LAST:event_backBtnActionPerformed
-
-    private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
         this.dispose();
-    }//GEN-LAST:event_exitBtnActionPerformed
+    }//GEN-LAST:event_backBtnActionPerformed
 
     Voice voice = new Voice();
     ScoreSystem score = new ScoreSystem(15);
@@ -246,11 +197,13 @@ public class PhrasePage extends javax.swing.JFrame {
                     //Logic to evaluate your answer
                     boolean result = score.returnResult(fullSentence, recognizedText);
                     if (result){
-                       spellCheck.setText("SUCCESS!");
+                       //spellCheck.setText("SUCCESS!");
+                       spellCheck.setText("<html><span style='color: rgb(51,255,0);'>" + "SUCCESS!"  + "</span></html>");
                        voice.stop();
                     }
                     else{
-                        spellCheck.setText("FALSE!");
+                        spellCheck.setText("<html><span style='color: rgb(255,0,0);'>" + "FALSE!"  + "</span></html>");
+                        //spellCheck.setText("FALSE!");
                         voice.stop();
                     }
                     
@@ -282,11 +235,23 @@ public class PhrasePage extends javax.swing.JFrame {
     }//GEN-LAST:event_speakerBtnActionPerformed
 
 
+    private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
+        /*
+        new Thread(() -> {
+            Phrase myPhrase = new Phrase(sentenceStarters, sentenceFinishers);
+            sentenceStarter = myPhrase.randomStarter();
+            sentenceFinisher = myPhrase.randomFinisher();
+            sentence = "<html><div style='text-align: center;'><span style='color: black;'>\"</span><span style='color: rgb(157,157,157);'>" + sentenceStarter + "<br/>" + sentenceFinisher + "</span><span style='color: black;'>\"</span></div></html>";
+            sentenceLabel.setText(sentence);       
+        }).start();
+         */
+    }//GEN-LAST:event_nextBtnActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton audioBtn;
     private javax.swing.JToggleButton backBtn;
     private javax.swing.JLabel background;
-    private javax.swing.JButton exitBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton nextBtn;
     private javax.swing.JLabel sentenceLabel;
