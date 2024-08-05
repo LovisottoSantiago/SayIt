@@ -15,12 +15,13 @@ public class PhrasePage extends javax.swing.JFrame {
     public TextTTS speaker;
     public String sentence;
     public Voice voice;
+    public HomePage homePage;
     public ScoreSystem score;
     public ArrayList<String> sentenceStarters;
     public ArrayList<String> sentenceFinishers;
     
     
-public PhrasePage(ArrayList<String> sentenceStarters, ArrayList<String> sentenceFinishers, Voice voice) {
+public PhrasePage(ArrayList<String> sentenceStarters, ArrayList<String> sentenceFinishers, Voice voice,  HomePage homePage) {
 System.out.println("Initializing PhrasePage...");
     setUndecorated(true);
     initComponents();
@@ -30,6 +31,7 @@ System.out.println("Initializing PhrasePage...");
 
     // Initialize sentence lists
     this.voice = voice;
+    this.homePage = homePage;
     this.score = new ScoreSystem(15);
     this.sentenceStarters = sentenceStarters;
     this.sentenceFinishers = sentenceFinishers;
@@ -179,6 +181,7 @@ System.out.println("Initializing PhrasePage...");
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        homePage.setVisible(true);
         this.dispose();       
     }//GEN-LAST:event_backBtnActionPerformed
 

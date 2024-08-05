@@ -352,7 +352,6 @@ public class HomePage extends javax.swing.JFrame {
     private int mouseY;
 
     private PhrasePage phrasePage;  // Instance variable to keep track of PhrasePage
-
     Voice voice1 = new Voice();
     public void openPhrasePage() {
     // Check if the PhrasePage is already open
@@ -361,9 +360,10 @@ public class HomePage extends javax.swing.JFrame {
            phrasePage = null;     // Nullify the reference after disposal
        }    
        // Create a new instance of PhrasePage
-       phrasePage = new PhrasePage(sentenceStarters, sentenceFinishers, voice1);
+       phrasePage = new PhrasePage(sentenceStarters, sentenceFinishers, voice1, this);
        phrasePage.setVisible(true);
        phrasePage.setLocationRelativeTo(null);
+       this.setVisible(false);
     }
 
 
