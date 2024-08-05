@@ -351,10 +351,20 @@ public class HomePage extends javax.swing.JFrame {
     private int mouseX;
     private int mouseY;
 
-    public void openPhrasePage(){
-        PhrasePage phrasePage = new PhrasePage(sentenceStarters, sentenceFinishers);
-        phrasePage.setVisible(true);
-        phrasePage.setLocationRelativeTo(null);
+    private PhrasePage phrasePage;  // Instance variable to keep track of PhrasePage
+
+    Voice voice1 = new Voice();
+    public void openPhrasePage() {
+    // Check if the PhrasePage is already open
+       if (phrasePage != null && phrasePage.isVisible()) {
+           phrasePage.dispose();  // Dispose of the existing instance
+           phrasePage = null;     // Nullify the reference after disposal
+       }    
+       // Create a new instance of PhrasePage
+       phrasePage = new PhrasePage(sentenceStarters, sentenceFinishers, voice1);
+       phrasePage.setVisible(true);
+       phrasePage.setLocationRelativeTo(null);
     }
+
 
 }

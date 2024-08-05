@@ -5,6 +5,8 @@ import Logic.Phrase;
 import Logic.ScoreSystem;
 import Logic.TextTTS;
 import Logic.Voice;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 public class PhrasePage extends javax.swing.JFrame {
@@ -12,46 +14,48 @@ public class PhrasePage extends javax.swing.JFrame {
     public String sentenceFinisher;
     public TextTTS speaker;
     public String sentence;
+    public Voice voice;
+    public ScoreSystem score;
     public ArrayList<String> sentenceStarters;
     public ArrayList<String> sentenceFinishers;
     
     
-    public PhrasePage(ArrayList<String> sentenceStarters, ArrayList<String> sentenceFinishers) {
-        setUndecorated(true);
-        initComponents();
-        setSize(600, 420);
-        setResizable(false);
-        speaker = new TextTTS();
+public PhrasePage(ArrayList<String> sentenceStarters, ArrayList<String> sentenceFinishers, Voice voice) {
+System.out.println("Initializing PhrasePage...");
+    setUndecorated(true);
+    initComponents();
+    setSize(600, 420);
+    setResizable(false);
+    speaker = new TextTTS();    
 
-        // Initialize sentence lists
-        this.sentenceStarters = sentenceStarters;
-        this.sentenceFinishers = sentenceFinishers;
-        
-        // Add mouse listeners to enable window dragging
-        jPanel1.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent evt) {
-                mouseX = evt.getX();
-                mouseY = evt.getY();
-            }
-        });
+    // Initialize sentence lists
+    this.voice = voice;
+    this.score = new ScoreSystem(15);
+    this.sentenceStarters = sentenceStarters;
+    this.sentenceFinishers = sentenceFinishers;
 
-        jPanel1.addMouseMotionListener(new MouseAdapter() {
-            @Override
-            public void mouseDragged(MouseEvent evt) {
-                int x = evt.getXOnScreen();
-                int y = evt.getYOnScreen();
-                setLocation(x - mouseX, y - mouseY);
-            }
-        });                  
-                
-       
-        
-        // Set initial sentence
-        updateSentence();
+    // Add mouse listeners to enable window dragging
+    jPanel1.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mousePressed(MouseEvent evt) {
+            mouseX = evt.getX();
+            mouseY = evt.getY();
+        }
+    });
 
-    }
-
+    jPanel1.addMouseMotionListener(new MouseAdapter() {
+        @Override
+        public void mouseDragged(MouseEvent evt) {
+            int x = evt.getXOnScreen();
+            int y = evt.getYOnScreen();
+            setLocation(x - mouseX, y - mouseY);
+        }
+    });                  
+    
+    // Set initial sentence
+    updateSentence();
+    System.out.println("PhrasePage initialized.");
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -175,11 +179,8 @@ public class PhrasePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        this.dispose();      
+        this.dispose();       
     }//GEN-LAST:event_backBtnActionPerformed
-
-    Voice voice = new Voice();
-    ScoreSystem score = new ScoreSystem(15);
 
     private void audioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audioBtnActionPerformed
          // Disable the button to prevent multiple clicks
@@ -214,7 +215,6 @@ public class PhrasePage extends javax.swing.JFrame {
     private void speakerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speakerBtnActionPerformed
             // Combine sentenceStarter and sentenceFinisher into a single string
         String phrase = sentenceStarter + sentenceFinisher;
-
         // Check for non-null and non-empty phrase
         if (phrase != null && !phrase.trim().isEmpty()) {
             // Use a background thread to handle the TTS operation
@@ -252,12 +252,14 @@ public class PhrasePage extends javax.swing.JFrame {
     private int mouseX;
     private int mouseY;
 
-     private void updateSentence() {
+    private void updateSentence() {
         Phrase myPhrase = new Phrase(sentenceStarters, sentenceFinishers);
         sentenceStarter = myPhrase.randomStarter();
         sentenceFinisher = myPhrase.randomFinisher();
         sentence = "<html><div style='text-align: center;'><span style='color: black;'>\"</span><span style='color: rgb(157,157,157);'>" + sentenceStarter + "<br/>" + sentenceFinisher + "</span><span style='color: black;'>\"</span></div></html>";
         sentenceLabel.setText(sentence);
-    }
-
+    }     
+    
+    
+    
 }

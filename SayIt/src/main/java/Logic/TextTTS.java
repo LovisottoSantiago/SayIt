@@ -5,18 +5,18 @@ import com.sun.speech.freetts.VoiceManager;
 
 public class TextTTS {
 
-    private final Voice voice;
+    private final Voice speaker;
 
     public TextTTS() { 
         System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
         VoiceManager voiceManager = VoiceManager.getInstance();
-        voice = voiceManager.getVoice("kevin16");
+        speaker = voiceManager.getVoice("kevin16");
         
-        if (voice != null) {
+        if (speaker != null) {
             try {
-                voice.allocate();
-                voice.setPitch(120); // Adjust pitch as needed
-                voice.setRate(140); // Adjust rate as needed
+                speaker.allocate();
+                speaker.setPitch(120); // Adjust pitch as needed
+                speaker.setRate(140); // Adjust rate as needed
                 System.out.println("Text-to-Speech engine ready...");
             } catch (Exception e) {
                 System.err.println("Failed to allocate voice: " + e.getMessage());
@@ -27,10 +27,23 @@ public class TextTTS {
     }
 
     public void Talk(final String phrase) {
-        if (voice != null && phrase != null && !phrase.isEmpty()) {
-            new Thread(() -> voice.speak(phrase)).start(); // Use a new thread to avoid blocking
+        if (speaker != null && phrase != null && !phrase.isEmpty()) {
+            new Thread(() -> speaker.speak(phrase)).start(); // Use a new thread to avoid blocking
         } else {
             System.err.println("Voice is not initialized or phrase is empty.");
         }
     } 
+    
+    public void stop() {
+        if (speaker != null) {
+            try {
+                speaker.deallocate(); // Release resources
+                System.out.println("Voice deallocated.");
+            } catch (Exception e) {
+                System.err.println("Failed to deallocate voice: " + e.getMessage());
+            }
+        }
+    }
+    
+    
 }
