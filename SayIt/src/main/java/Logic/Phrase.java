@@ -5,57 +5,27 @@ import java.util.ArrayList;
 
 public class Phrase {
 
-    private ArrayList<String> sentenceStarters;
-    private ArrayList<String> sentenceFinishers;
+    private ArrayList<String> sentence;
 
-    public Phrase(ArrayList<String> sentenceStarters, ArrayList<String> sentenceFinishers) {
-        this.sentenceStarters = sentenceStarters;
-        this.sentenceFinishers = sentenceFinishers;
+    public Phrase(ArrayList<String> sentence) {
+        this.sentence = sentence;
     }
 
-    public ArrayList<String> getSentenceStarters() {
-        return sentenceStarters;
+    public ArrayList<String> getSentence() {
+        return sentence;
     }
-    public void setSentenceStarters(ArrayList<String> sentenceStarters) {
-        this.sentenceStarters = sentenceStarters;
+    public void setSentence(ArrayList<String> sentence) {
+        this.sentence = sentence;
     }
-
-    public ArrayList<String> getSentenceFinishers() {
-        return sentenceFinishers;
-    }
-    public void setSentenceFinishers(ArrayList<String> sentenceFinishers) {
-        this.sentenceFinishers = sentenceFinishers;
-    }
-    
 
 // <! ------------------------------------ METHODS ------------------------------------ !/>   
-// <! ------------ Generate a random phrase ------------ !/>   
-        public String randomPhrase(){
-        String start = randomStarter();
-        String finish = randomFinisher();
-        String output = start + " " + finish;
-        return output;        
-    }   
         
-    // <! ------------ Generate a random starter ------------ !/>
-    public String randomStarter(){
+    // <! ------------ Generate a random sentence ------------ !/>
+    public String randomSentence(){
         Random choice = new Random();
-        int randomWord = choice.nextInt(sentenceStarters.size());              
-        String output = sentenceStarters.get(randomWord);                    
+        int randomWord = choice.nextInt(sentence.size());              
+        String output = sentence.get(randomWord);                    
         return output;
-    }
-    
-    // <! ------------ Generate a random finisher ------------ !/>
-    public String randomFinisher(){
-        Random choice = new Random();
-        int randomWord = choice.nextInt(sentenceFinishers.size());              
-        String output = sentenceFinishers.get(randomWord);                    
-        return output;
-    }
-    
-    
-    
-    
-    
+    }    
     
 }

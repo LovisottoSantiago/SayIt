@@ -10,18 +10,16 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 public class PhrasePage extends javax.swing.JFrame {
-    public String sentenceStarter;
-    public String sentenceFinisher;
     public TextTTS speaker;
     public String sentence;
+    public String RandomSentence;
     public Voice voice;
     public HomePage homePage;
     public ScoreSystem score;
-    public ArrayList<String> sentenceStarters;
-    public ArrayList<String> sentenceFinishers;
+    public ArrayList<String> sentenceList;
     
     
-public PhrasePage(ArrayList<String> sentenceStarters, ArrayList<String> sentenceFinishers, Voice voice,  HomePage homePage) {
+public PhrasePage(ArrayList<String> sentenceList, Voice voice,  HomePage homePage, ScoreSystem scoreSystem) {
 System.out.println("Initializing PhrasePage...");
     setUndecorated(true);
     initComponents();
@@ -32,9 +30,8 @@ System.out.println("Initializing PhrasePage...");
     // Initialize sentence lists
     this.voice = voice;
     this.homePage = homePage;
-    this.score = new ScoreSystem(15);
-    this.sentenceStarters = sentenceStarters;
-    this.sentenceFinishers = sentenceFinishers;
+    this.score = scoreSystem;
+    this.sentenceList = sentenceList;
 
     // Add mouse listeners to enable window dragging
     jPanel1.addMouseListener(new MouseAdapter() {
@@ -114,7 +111,7 @@ System.out.println("Initializing PhrasePage...");
         sentenceLabel.setForeground(new java.awt.Color(157, 157, 157));
         sentenceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sentenceLabel.setText(" ");
-        jPanel1.add(sentenceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 160, 450, -1));
+        jPanel1.add(sentenceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 420, -1));
 
         backBtn.setBackground(new java.awt.Color(255, 255, 255));
         backBtn.setFont(new java.awt.Font("Poppins Black", 0, 48)); // NOI18N
@@ -187,7 +184,6 @@ System.out.println("Initializing PhrasePage...");
 
     private void audioBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_audioBtnActionPerformed
          // Disable the button to prevent multiple clicks
-        String fullSentence = sentenceStarter + sentenceFinisher;
         audioBtn.setEnabled(false);
         // Create a new thread to handle voice recognition
         new Thread(() -> {            
@@ -196,7 +192,7 @@ System.out.println("Initializing PhrasePage...");
             javax.swing.SwingUtilities.invokeLater(() -> {
                 if (recognizedText != null && !recognizedText.isEmpty()) {                    
                     //Logic to evaluate your answer
-                    boolean result = score.returnResult(fullSentence, recognizedText);
+                    boolean result = score.returnResult(RandomSentence, recognizedText);
                     if (result){
                        //spellCheck.setText("SUCCESS!");
                        spellCheck.setText("<html><span style='color: rgb(51,255,0);'>" + "SUCCESS!"  + "</span></html>");
@@ -216,14 +212,12 @@ System.out.println("Initializing PhrasePage...");
     }//GEN-LAST:event_audioBtnActionPerformed
 
     private void speakerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speakerBtnActionPerformed
-            // Combine sentenceStarter and sentenceFinisher into a single string
-        String phrase = sentenceStarter + sentenceFinisher;
         // Check for non-null and non-empty phrase
-        if (phrase != null && !phrase.trim().isEmpty()) {
+        if (RandomSentence != null && !RandomSentence.trim().isEmpty()) {
             // Use a background thread to handle the TTS operation
             new Thread(() -> {
                 try {
-                    speaker.Talk(phrase);
+                    speaker.Talk(RandomSentence);
                 } catch (Exception e) {
                     System.err.println("Error during TTS operation: " + e.getMessage());
                 }
@@ -256,10 +250,9 @@ System.out.println("Initializing PhrasePage...");
     private int mouseY;
 
     private void updateSentence() {
-        Phrase myPhrase = new Phrase(sentenceStarters, sentenceFinishers);
-        sentenceStarter = myPhrase.randomStarter();
-        sentenceFinisher = myPhrase.randomFinisher();
-        sentence = "<html><div style='text-align: center;'><span style='color: black;'>\"</span><span style='color: rgb(157,157,157);'>" + sentenceStarter + "<br/>" + sentenceFinisher + "</span><span style='color: black;'>\"</span></div></html>";
+        Phrase myPhrase = new Phrase(sentenceList);
+        RandomSentence = myPhrase.randomSentence();
+        sentence = "<html><div style='text-align: center;'><span style='color: black;'>\"</span><span style='color: rgb(157,157,157);'>" + RandomSentence + "</span><span style='color: black;'>\"</span></div></html>";
         sentenceLabel.setText(sentence);
     }     
     

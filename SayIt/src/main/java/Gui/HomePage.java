@@ -13,14 +13,291 @@ import java.util.Arrays;
 import javax.swing.JRadioButton;
 
 public class HomePage extends javax.swing.JFrame {
-    public String sentenceStarter;
-    public String sentenceFinisher;
     public TextTTS speaker;
-    public int startSelected;   
+    public String startSelected;   
     public Phrase myPhrase;
-    public ArrayList<String> sentenceStarters;
-    public ArrayList<String> sentenceFinishers;
+    public ArrayList<String> sentenceList;
     
+    
+    
+         // <! ------------------------------------ ARRAYLISTS ------------------------------------ !/>   
+        // <! ------------ Entertainment  ------------ !/>    
+        private final ArrayList<String> entertainmentPhrases = new ArrayList<>(Arrays.asList(
+            "Heisenberg makes dangerous decisions.",  // Breaking Bad
+            "Wizards use magic wands to cast spells.",  // Harry Potter
+            "Bending elements is an ancient skill.",  // Avatar: The Last Airbender
+            "Homer loves to eat donuts every day.",  // The Simpsons
+            "Sherlock solves mysteries with keen insight.",  // Sherlock Holmes
+            "The Force gives strength to Jedi knights.",  // Star Wars
+            "Friends often go out for coffee together.",  // Friends
+            "The Upside Down is a dark dimension.",  // Stranger Things
+            "Winter brings cold weather and snow.",  // Game of Thrones
+            "Jim often plays pranks on Dwight.",  // The Office
+            "Doctors work hard to save lives daily.",  // Grey's Anatomy
+            "Detectives analyze evidence to solve crimes.",  // CSI Miami
+            "The Queen lives in Buckingham Palace.",  // The Crown
+            "Drug lords control the illegal trade.",  // Narcos
+            "The Mandalorian protects a mysterious child.",  // The Mandalorian
+            "Technology advances rapidly in modern times.",  // Black Mirror
+            "Witchers hunt monsters for a living.",  // The Witcher
+            "Sheldon is known for his quirky habits.",  // Big Bang Theory
+            "Lost survivors struggle to find rescue.",  // Lost
+            "Time is often described as cyclical.",  // True Detective
+            "Homer's plans usually end in disaster.",  // The Simpsons
+            "Breaking Bad shows dramatic character changes.",  // Breaking Bad
+            "Wizards attend Hogwarts for magical training.",  // Harry Potter
+            "Airbenders control the wind and air.",  // Avatar: The Last Airbender
+            "Strangers can appear in strange places.",  // Stranger Things
+            "Dragons are feared and revered creatures.",  // Game of Thrones
+            "Jim and Pam share a deep connection.",  // The Office
+            "Meredith Grey deals with hospital challenges.",  // Grey's Anatomy
+            "Narcos depicts the life of drug traffickers.",  // Narcos
+            "Mandalorian's mission involves protecting Baby Yoda.",  // The Mandalorian
+            "Black Mirror explores dark technological futures.",  // Black Mirror
+            "Geralt battles monsters in dangerous lands.",  // The Witcher
+            "Sheldon’s spot is his favorite place.",  // Big Bang Theory
+            "The island has many hidden secrets.",  // Lost
+            "Detectives seek clues to solve mysteries.",  // True Detective
+            "Michael Scott tries to be a good boss.",  // The Office
+            "Eleven uses powers to fight evil.",  // Stranger Things
+            "Winter brings challenges and harsh conditions.",  // Game of Thrones
+            "Breaking Bad portrays intense moral conflicts.",  // Breaking Bad
+            "Magical creatures exist in the wizarding world.",  // Harry Potter
+            "Avatar's world has diverse and magical creatures.",  // Avatar: The Last Airbender
+            "The Simpsons often feature humorous scenarios.",  // The Simpsons
+            "The Queen faces public and political duties.",  // The Crown
+            "Drug trafficking is a dangerous and illegal business.",  // Narcos
+            "The Mandalorian follows a strict code of honor.",  // The Mandalorian
+            "Technology impacts our daily lives dramatically.",  // Black Mirror
+            "The Witcher uses magic to fight monsters.",  // The Witcher
+            "Friends often support each other in life.",  // Friends
+            "Lost characters face many survival challenges.",  // Lost
+            "Detectives use intuition and evidence to solve cases.",  // True Detective
+            "Dwight loves to work on his beet farm.",  // The Office
+            "Doctors face tough decisions every day."  // Grey's Anatomy
+        ));
+        
+         // <! ------------ Travel and places  ------------ !/>   
+         private final ArrayList<String> travelPhrases = new ArrayList<>(Arrays.asList(
+            "Where is the nearest hotel?",
+            "I would like to book a table.",
+            "How much does this cost?",
+            "Can you help me find a taxi?",
+            "I need directions to the airport.",
+            "Is breakfast included with the room?",
+            "Can I get the bill, please?",
+            "Do you have a vegetarian menu?",
+            "What time does the last train leave?",
+            "Where can I buy a ticket?",
+            "Can you recommend a good restaurant?",
+            "I would like a room with a view.",
+            "Is there a pharmacy nearby?",
+            "How do I get to the museum?",
+            "I need a wake-up call at 7 AM.",
+            "Do you have a map of the city?",
+            "Can you show me how to use this?",
+            "Where is the nearest ATM?",
+            "I’d like to order room service.",
+            "How far is the beach from here?",
+            "Can you help me with my luggage?",
+            "Where can I rent a car?",
+            "What is the Wi-Fi password?",
+            "Is there a laundry service available?",
+            "Can I have a taxi to the airport?",
+            "Where is the nearest grocery store?",
+            "Do you have any local tours available?",
+            "How can I get to the nearest hospital?",
+            "Where is the best place to shop?",
+            "I need a reservation for two people.",
+            "Can I get directions to the nearest bank?",
+            "What time does the museum close?",
+            "Is there a bus that goes to downtown?",
+            "I need a wake-up call at 6 AM.",
+            "Where is the closest coffee shop?",
+            "Can you recommend a local guide?",
+            "What is the best way to get around?",
+            "How can I get to the train station?",
+            "Do you offer airport shuttle services?",
+            "Where can I buy souvenirs?",
+            "Can you call a cab for me?",
+            "What is the address of this place?",
+            "Are there any good nearby attractions?",
+            "How much is a one-way ticket?",
+            "Where can I find a good place to eat?",
+            "Do you have a phone charger I can borrow?",
+            "Can I pay with a credit card?",
+            "What time does the bus arrive?"
+        ));
+        
+        // <! ------------ Food & Drink ------------ !/>           
+        private final ArrayList<String> foodPhrases = new ArrayList<>(Arrays.asList(
+            "Can I see the menu, please?",
+            "I’d like to order a coffee.",
+            "What are today’s specials?",
+            "Does this dish contain nuts?",
+            "Can I get the bill, please?",
+            "Do you have any vegetarian options?",
+            "Can I have a glass of water?",
+            "Could you recommend a wine?",
+            "Is this dish spicy?",
+            "I’m allergic to shellfish.",
+            "Can I get this to go?",
+            "Do you offer gluten-free options?",
+            "What’s in this salad?",
+            "Can we sit by the window?",
+            "Can I have the check, please?",
+            "Do you have a children’s menu?",
+            "How long is the wait?",
+            "Do you serve breakfast all day?",
+            "Can I get extra napkins?",
+            "Is this dish dairy-free?",
+            "Could you bring more bread?",
+            "Can I get a refill, please?",
+            "Do you have any low-fat options?",
+            "Can I see the wine list?",
+            "Is this meal made from scratch?",
+            "Do you have any non-alcoholic drinks?",
+            "Can I substitute the fries for a salad?",
+            "What is today’s soup?",
+            "Can you make it less salty?",
+            "Do you offer any dessert options?",
+            "Can I have a side of vegetables?",
+            "Is this steak cooked well done?",
+            "Can I get a different side dish?",
+            "Do you have any local specialties?",
+            "Can I have the dressing on the side?",
+            "What’s the soup of the day?",
+            "Can I get this with no onions?",
+            "Do you have any vegan options?",
+            "Can you make it less spicy?",
+            "Is the fish fresh today?",
+            "Can I get a to-go box?",
+            "Is this dish served hot?",
+            "Do you have any sugar-free desserts?",
+            "Can I get a table for two?",
+            "What’s the best dish here?",
+            "Do you offer any drink specials?",
+            "Can you split the bill, please?",
+            "Can I have the sauce on the side?",
+            "Are there any daily specials today?",
+            "Can I get extra cheese on this?",
+            "Is there a waiting list for tables?"
+        ));
+        
+        // <! ------------ Daily life ------------ !/>   
+        private final ArrayList<String> dailyStarters = new ArrayList<>(Arrays.asList(
+            "Can I use this machine?",
+            "What time does the class start?",
+            "Hello, how are you today?",
+            "May I use your phone?",
+            "How much does this cost?",
+            "Do you have any recommendations?",
+            "I need to complete this form",
+            "Where is the nearest gym?",
+            "Is this seat taken?",
+            "Can I borrow a pen?",
+            "Where is the bathroom?",
+            "Do you accept credit cards?",
+            "How do I get to the station?",
+            "I need help with this assignment",
+            "Can I have the bill, please?",
+            "Is this item on sale?",
+            "What’s your name?",
+            "Could you please repeat that?",
+            "When does the next bus arrive?",
+            "Where can I find the library?",
+            "Can I have a glass of water?",
+            "How long is the wait time?",
+            "Can you help me find this address?",
+            "Do you have a map of the city?",
+            "How do I fill out this form?",
+            "What is the Wi-Fi password?",
+            "Can I get a refund for this?",
+            "Where is the nearest restaurant?",
+            "Can I see the menu, please?",
+            "Is there a discount for students?",
+            "When does the store close?",
+            "How do I make an appointment?",
+            "Can I pay with cash?",
+            "Is there a fee for this service?",
+            "Where is the nearest ATM?",
+            "Can I try this on?",
+            "Do you have any vegetarian options?",
+            "Can I get a doggy bag?",
+            "How much is the entry fee?",
+            "Can you recommend a good place?",
+            "Where is the lost and found?",
+            "What time does the movie start?",
+            "Can I speak to the manager?",
+            "Do you have any allergy-free products?",
+            "How do I use this machine?",
+            "Can I have a receipt, please?",
+            "Is it safe to walk around here?", // y de Florencio Varela, es el Noba y te resuena
+            "Where can I buy tickets?",
+            "Can I get a ride to the airport?"
+         ));
+        
+        // <! ------------ Jobs and career  ------------ !/>   
+        private final ArrayList<String> jobsStarters = new ArrayList<>(Arrays.asList(
+            "What are your main responsibilities here?",
+            "Can you describe the company culture?",
+            "What skills are needed for this role?",
+            "How do you measure success in this position?",
+            "Could you explain this assignment further?",
+            "When is the deadline for this project?",
+            "What are the course requirements?",
+            "How often do performance reviews occur?",
+            "What are the opportunities for advancement?",
+            "What training or development programs are available?",
+            "How does the team handle conflicts?",
+            "Can you describe a typical workday here?",
+            "What goals are expected for this role?",
+            "What is the company's approach to work-life balance?",
+            "Are there any specific projects you’re working on?",
+            "How do you prioritize tasks and projects?",
+            "What resources are available for career growth?",
+            "What is the typical career path in this role?",
+            "Can you give an example of a recent challenge?",
+            "How do you stay updated with industry trends?",
+            "What are the key qualities for success here?",
+            "What are the most common reasons for promotion?",
+            "How is feedback typically given in this role?",
+            "What tools or software will I be using?",
+            "How does this role fit within the company?",
+            "Can you describe the team structure?",
+            "What are the main goals for this position?",
+            "What support is provided for professional development?",
+            "What is the onboarding process like?",
+            "Can you provide examples of career growth?",
+            "What are the expectations for this role?",
+            "How does the company handle career transitions?",
+            "What are the current major projects or initiatives?",
+            "What is the management style like here?",
+            "Are there opportunities for cross-departmental work?",
+            "What are the most rewarding aspects of this role?",
+            "How does the company support work-life balance?",
+            "What types of professional development are encouraged?",
+            "How does the company measure employee performance?",
+            "Can you describe the work environment here?",
+            "What challenges might I face in this role?",
+            "What are the typical career paths in this field?",
+            "How do you ensure effective communication in the team?",
+            "What is the company’s approach to mentoring?",
+            "What is the most important skill for this position?",
+            "How does the company handle employee feedback?",
+            "What are the current priorities for this department?",
+            "How does the role contribute to company goals?",
+            "Can you describe the company’s mission and values?",
+            "What are the common career trajectories here?",
+            "How often do team meetings take place?",
+            "What is the company’s policy on remote work?",
+            "How does the company support academic pursuits?",
+            "What are the key performance indicators for this role?",
+            "How does the team collaborate on projects?",
+            "What kind of support is available for new hires?"
+        ));
+        
+        
     public HomePage() {
        setUndecorated(true);
         initComponents();
@@ -56,7 +333,9 @@ public class HomePage extends javax.swing.JFrame {
             }
             // Disable the newly selected button
             selectedButton.setEnabled(false);
-            startSelected = selectedButton.hashCode();
+            startSelected = selectedButton.getToolTipText();
+            //System.out.println(startSelected);
+
        };
         
         entertainmentBtn.addActionListener(actionListener);
@@ -65,61 +344,7 @@ public class HomePage extends javax.swing.JFrame {
         dailyBtn.addActionListener(actionListener);
         jobsBtn.addActionListener(actionListener);
         
-        
-        // <! ------------------------------------ ARRAYLISTS ------------------------------------ !/>   
-        // <! ------------ Entertainment  ------------ !/>    
-        ArrayList<String> startersTest = new ArrayList<>(Arrays.asList(
-            "Stephen King writes", "The Dark Tower rises", "A ghost haunts", 
-            "A child discovers", "A writer struggles", "The clown terrifies", 
-            "A town secrets", "The monster emerges", "A family unravels", 
-            "The hotel beckons", "The wizard casts", "Harry Potter learns", 
-            "Hermione studies", "Ron Weasley jokes", "A spell backfires", 
-            "The owl delivers", "A potion brews", "The broomstick flies", 
-            "Dumbledore advises", "Voldemort plots", "The calculus student solves", 
-            "The derivative measures", "The integral calculates", "A function graphs", 
-            "A limit approaches", "A sequence converges", "The theorem proves", 
-            "An equation balances", "The variable changes", "The curve bends", 
-            "Buenos Aires shines", "An Argentine tango", "A gaucho rides", 
-            "The pampas stretch", "A football match", "The Andes tower", 
-            "A Malbec pours", "The mate circulates", "The asado sizzles", 
-            "San Martin studies", "The glacier calms", "A street artist", 
-            "The plaza fills", "A train travels", "The wine vineyard", 
-            "A mountain trail", "The coastal city", "A river flows", 
-            "The Patagonia wilderness"
-        ));
-        ArrayList<String> finishersTest = new ArrayList<>(Arrays.asList(
-            "in a small town.", "in the Overlook Hotel.", "under the bed.", 
-            "in the haunted house.", "in Derry, Maine.", "in the eerie woods.", 
-            "in the basement.", "on the isolated island.", "in the dark room.", 
-            "at the creepy carnival.", "at Hogwarts.", "in the Forbidden Forest.", 
-            "in the Potions class.", "in the Gryffindor common room.", "in the Quidditch match.", 
-            "in Diagon Alley.", "in the Chamber of Secrets.", "in the Great Hall.", 
-            "at Hogsmeade.", "in the Room of Requirement.", "during the exam.", 
-            "on the coordinate plane.", "under the curve.", "within the limit.", 
-            "in the complex plane.", "on the function's graph.", "within the series.", 
-            "under the theorem.", "on the x-axis.", "at the point of inflection.", 
-            "in the heart of Buenos Aires.", "on the dance floor.", "across the pampas.", 
-            "in the football stadium.", "in the Andes.", "in the vineyard.", 
-            "at the asado.", "around the mate circle.", "in the shadow of the glacier.", 
-            "in the street market.", "at the Obelisk.", 
-            "through the subway.", "on the mountain path.", "along the coast.", 
-            "near the river delta.", "in the Patagonian steppe."
-        ));               
-        
-        // <! ------------ Travel and places  ------------ !/>   
-        
-        
-        // <! ------------ Food & Drink ------------ !/>   
-        
-        
-        // <! ------------ Daily life ------------ !/>   
-        
-        
-        // <! ------------ Jobs and career  ------------ !/>   
-        
-        sentenceStarters = startersTest;
-        sentenceFinishers = finishersTest;
-
+                
     }
     
     
@@ -182,7 +407,7 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1.add(entertainmentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 117, 210, 50));
 
         topicGroup.add(travelBtn);
-        travelBtn.setToolTipText("");
+        travelBtn.setToolTipText("travel");
         travelBtn.setBorder(null);
         travelBtn.setContentAreaFilled(false);
         travelBtn.setFocusPainted(false);
@@ -324,7 +549,35 @@ public class HomePage extends javax.swing.JFrame {
 
     
     private void startBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBtnActionPerformed
-        openPhrasePage();
+        // Update sentenceStarters and sentenceFinishers based on the selected button
+        switch (startSelected) {
+            case "entertainment" -> {
+                openPhrasePage(entertainmentPhrases);
+            }
+            case "travel" -> {
+                sentenceList = travelPhrases;
+                openPhrasePage(sentenceList);
+            }
+            case "food" -> {
+                sentenceList = foodPhrases;
+                openPhrasePage(sentenceList);
+            }
+            case "daily" -> {
+                sentenceList = dailyStarters;
+                openPhrasePage(sentenceList);
+            }
+            case "jobs" -> {
+                sentenceList = jobsStarters;
+                openPhrasePage(sentenceList);
+            }
+            case null -> {
+                sentenceList = travelPhrases;
+                openPhrasePage(sentenceList);
+            }      
+            default -> {
+                System.out.println("No class selected");
+            }                
+        }
     }//GEN-LAST:event_startBtnActionPerformed
 
 
@@ -351,16 +604,19 @@ public class HomePage extends javax.swing.JFrame {
     private int mouseX;
     private int mouseY;
 
-    private PhrasePage phrasePage;  // Instance variable to keep track of PhrasePage
+    // Initialize before open method
+    private PhrasePage phrasePage; 
     Voice voice1 = new Voice();
-    public void openPhrasePage() {
+    
+    public void openPhrasePage(ArrayList<String> sentenceList) {
     // Check if the PhrasePage is already open
        if (phrasePage != null && phrasePage.isVisible()) {
            phrasePage.dispose();  // Dispose of the existing instance
            phrasePage = null;     // Nullify the reference after disposal
        }    
        // Create a new instance of PhrasePage
-       phrasePage = new PhrasePage(sentenceStarters, sentenceFinishers, voice1, this);
+       ScoreSystem scoreSystem = new ScoreSystem(20);
+       phrasePage = new PhrasePage(sentenceList, voice1, this, scoreSystem);
        phrasePage.setVisible(true);
        phrasePage.setLocationRelativeTo(null);
        this.setVisible(false);

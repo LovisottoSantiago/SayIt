@@ -22,14 +22,15 @@ public final class Voice {
 
         Configuration config = new Configuration();
         config.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
-        config.setDictionaryPath("src/main/resources/Dictionary/0924.dic");
-        config.setLanguageModelPath("src/main/resources/Dictionary/0924.lm");
+        config.setDictionaryPath("src/main/resources/Dictionary/5252.dic");
+        config.setLanguageModelPath("src/main/resources/Dictionary/5252.lm");
 
         try {
             speechRecognizer = new LiveSpeechRecognizer(config);
-            isDisposed = false;
         } catch (IOException e) {
             System.err.println("Error initializing recognizer: " + e.getMessage());
+        } finally {
+            isDisposed = false; // Ensure isDisposed is set only after successful initialization
         }
     }
 
@@ -53,6 +54,7 @@ public final class Voice {
                 stop(); // Ensure recognition is stopped
             }
         }
+        System.out.println(voiceCommand);
         return voiceCommand;
     }
 
@@ -69,12 +71,11 @@ public final class Voice {
     }
 
     public synchronized void deallocate() {
-        if (isDisposed) {
-            return; // Do nothing if already disposed
+        if (!isDisposed) {
+            stop(); // Ensure it's stopped before deallocating
+            speechRecognizer = null;
+            isDisposed = true; // Mark as disposed
+            System.out.println("Speech recognizer deallocated.");
         }
-        stop(); // Ensure it's stopped before deallocating
-        speechRecognizer = null;
-        isDisposed = true; // Mark as disposed
-        System.out.println("Speech recognizer deallocated.");
     }
 }
