@@ -6,8 +6,10 @@ import Logic.ScoreSystem;
 import Logic.TextTTS;
 import Logic.Voice;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JRadioButton;
@@ -362,11 +364,12 @@ public class HomePage extends javax.swing.JFrame {
         jobsBtn = new javax.swing.JRadioButton();
         buttonsBG = new javax.swing.JLabel();
         startBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        logoBtn = new javax.swing.JButton();
+        helpBtn = new javax.swing.JButton();
         startBg = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
@@ -381,7 +384,7 @@ public class HomePage extends javax.swing.JFrame {
 
         exitBtn.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
         exitBtn.setForeground(new java.awt.Color(255, 255, 255));
-        exitBtn.setText("X");
+        exitBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/HomePage/closeBtn.png"))); // NOI18N
         exitBtn.setBorder(null);
         exitBtn.setBorderPainted(false);
         exitBtn.setContentAreaFilled(false);
@@ -391,7 +394,7 @@ public class HomePage extends javax.swing.JFrame {
                 exitBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 15, 25, 25));
+        jPanel1.add(exitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(563, 10, 25, 25));
 
         topicGroup.add(entertainmentBtn);
         entertainmentBtn.setToolTipText("entertainment");
@@ -474,17 +477,14 @@ public class HomePage extends javax.swing.JFrame {
                 startBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(startBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 317, 154, 50));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/HomePage/Logo.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(404, 127, 80, 80));
+        jPanel1.add(startBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 307, 210, 35));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Poppins", 1, 16)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Welcome to Say it!");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 228, 200, 19));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 231, 200, 19));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/HomePage/title.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 5, 145, 75));
@@ -494,14 +494,47 @@ public class HomePage extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("start improving!");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 190, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 275, 190, 20));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Poppins SemiBold", 0, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Choose the topic and");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 257, 190, -1));
+        jLabel3.setText("Select a topic and");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 255, 190, 20));
+
+        logoBtn.setBackground(new java.awt.Color(255, 255, 255));
+        logoBtn.setForeground(new java.awt.Color(255, 255, 255));
+        logoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/HomePage/Logo.png"))); // NOI18N
+        logoBtn.setBorder(null);
+        logoBtn.setBorderPainted(false);
+        logoBtn.setContentAreaFilled(false);
+        logoBtn.setDefaultCapable(false);
+        logoBtn.setFocusPainted(false);
+        logoBtn.setFocusable(false);
+        logoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(logoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(396, 117, 104, 100));
+
+        helpBtn.setBackground(new java.awt.Color(255, 255, 255));
+        helpBtn.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
+        helpBtn.setForeground(new java.awt.Color(51, 153, 255));
+        helpBtn.setText("need help?");
+        helpBtn.setBorder(null);
+        helpBtn.setBorderPainted(false);
+        helpBtn.setContentAreaFilled(false);
+        helpBtn.setDefaultCapable(false);
+        helpBtn.setFocusPainted(false);
+        helpBtn.setFocusable(false);
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 349, 100, -1));
 
         startBg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/HomePage/startBg.png"))); // NOI18N
         jPanel1.add(startBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 97, 210, 290));
@@ -580,6 +613,24 @@ public class HomePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_startBtnActionPerformed
 
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
+            try {
+                String url = "https://github.com/LovisottoSantiago/SayIt";
+                java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+            } catch (java.io.IOException e) {
+                System.out.println(e.getMessage());
+            }
+    }//GEN-LAST:event_helpBtnActionPerformed
+
+    private void logoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoBtnActionPerformed
+            try {
+                String url = "https://github.com/LovisottoSantiago";
+                java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+            } catch (java.io.IOException e) {
+                System.out.println(e.getMessage());
+            }
+    }//GEN-LAST:event_logoBtnActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -589,13 +640,14 @@ public class HomePage extends javax.swing.JFrame {
     private javax.swing.JRadioButton entertainmentBtn;
     private javax.swing.JButton exitBtn;
     private javax.swing.JRadioButton foodBtn;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton helpBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jobsBtn;
+    private javax.swing.JButton logoBtn;
     private javax.swing.JLabel startBg;
     private javax.swing.JButton startBtn;
     private javax.swing.ButtonGroup topicGroup;
@@ -621,6 +673,6 @@ public class HomePage extends javax.swing.JFrame {
        phrasePage.setLocationRelativeTo(null);
        this.setVisible(false);
     }
-
-
+    
 }
+  
