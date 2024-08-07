@@ -17,5 +17,7 @@ Después de leer, SayIt te dará un puntaje y te informará si cometiste errores
 
 
 _________________
+Icono generado con DrawKit. 
+
 
 ### ¡Probá SayIt y lleva tu pronunciación al siguiente nivel!
