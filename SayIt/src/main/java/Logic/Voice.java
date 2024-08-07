@@ -22,8 +22,8 @@ public final class Voice {
 
         Configuration config = new Configuration();
         config.setAcousticModelPath("resource:/edu/cmu/sphinx/models/en-us/en-us");
-        config.setDictionaryPath("src/main/resources/Dictionary/5252.dic");
-        config.setLanguageModelPath("src/main/resources/Dictionary/5252.lm");
+        config.setDictionaryPath(getClass().getResource("/Dictionary/5252.dic").toString());
+        config.setLanguageModelPath(getClass().getResource("/Dictionary/5252.lm").toString());
 
         try {
             speechRecognizer = new LiveSpeechRecognizer(config);
@@ -54,7 +54,7 @@ public final class Voice {
                 stop(); // Ensure recognition is stopped
             }
         }
-        System.out.println(voiceCommand);
+        //System.out.println(voiceCommand);
         return voiceCommand;
     }
 

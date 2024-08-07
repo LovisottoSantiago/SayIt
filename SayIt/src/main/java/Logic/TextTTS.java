@@ -15,9 +15,9 @@ public class TextTTS {
         if (speaker != null) {
             try {
                 speaker.allocate();
-                speaker.setPitch(120); // Adjust pitch as needed
-                speaker.setRate(140); // Adjust rate as needed
-                System.out.println("Text-to-Speech engine ready...");
+                speaker.setPitch(130); // Adjust pitch as needed
+                speaker.setRate(145); // Adjust rate as needed
+                //System.out.println("Text-to-Speech engine ready...");
             } catch (Exception e) {
                 System.err.println("Failed to allocate voice: " + e.getMessage());
             }

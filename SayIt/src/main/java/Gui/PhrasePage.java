@@ -111,7 +111,7 @@ System.out.println("Initializing PhrasePage...");
         sentenceLabel.setForeground(new java.awt.Color(157, 157, 157));
         sentenceLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         sentenceLabel.setText(" ");
-        jPanel1.add(sentenceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 420, -1));
+        jPanel1.add(sentenceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 160, 410, -1));
 
         backBtn.setBackground(new java.awt.Color(255, 255, 255));
         backBtn.setFont(new java.awt.Font("Poppins Black", 0, 48)); // NOI18N
@@ -196,12 +196,12 @@ System.out.println("Initializing PhrasePage...");
                     if (result){
                        //spellCheck.setText("SUCCESS!");
                        spellCheck.setText("<html><span style='color: rgb(51,255,0);'>" + "SUCCESS!"  + "</span></html>");
-                       voice.stop();
+                       //voice.stop();
                     }
                     else{
                         spellCheck.setText("<html><span style='color: rgb(255,0,0);'>" + "FALSE!"  + "</span></html>");
                         //spellCheck.setText("FALSE!");
-                        voice.stop();
+                        //voice.stop();
                     }                    
                 } else {
                     spellCheck.setText("ERROR");

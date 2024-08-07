@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JRadioButton;
+import javax.swing.SwingUtilities;
 
 public class HomePage extends javax.swing.JFrame {
     public TextTTS speaker;
@@ -25,58 +26,105 @@ public class HomePage extends javax.swing.JFrame {
          // <! ------------------------------------ ARRAYLISTS ------------------------------------ !/>   
         // <! ------------ Entertainment  ------------ !/>    
         private final ArrayList<String> entertainmentPhrases = new ArrayList<>(Arrays.asList(
-            "Heisenberg makes dangerous decisions.",  // Breaking Bad
-            "Wizards use magic wands to cast spells.",  // Harry Potter
-            "Bending elements is an ancient skill.",  // Avatar: The Last Airbender
-            "Homer loves to eat donuts every day.",  // The Simpsons
-            "Sherlock solves mysteries with keen insight.",  // Sherlock Holmes
-            "The Force gives strength to Jedi knights.",  // Star Wars
-            "Friends often go out for coffee together.",  // Friends
-            "The Upside Down is a dark dimension.",  // Stranger Things
-            "Winter brings cold weather and snow.",  // Game of Thrones
-            "Jim often plays pranks on Dwight.",  // The Office
-            "Doctors work hard to save lives daily.",  // Grey's Anatomy
-            "Detectives analyze evidence to solve crimes.",  // CSI Miami
-            "The Queen lives in Buckingham Palace.",  // The Crown
-            "Drug lords control the illegal trade.",  // Narcos
-            "The Mandalorian protects a mysterious child.",  // The Mandalorian
-            "Technology advances rapidly in modern times.",  // Black Mirror
-            "Witchers hunt monsters for a living.",  // The Witcher
-            "Sheldon is known for his quirky habits.",  // Big Bang Theory
-            "Lost survivors struggle to find rescue.",  // Lost
-            "Time is often described as cyclical.",  // True Detective
-            "Homer's plans usually end in disaster.",  // The Simpsons
-            "Breaking Bad shows dramatic character changes.",  // Breaking Bad
-            "Wizards attend Hogwarts for magical training.",  // Harry Potter
-            "Airbenders control the wind and air.",  // Avatar: The Last Airbender
-            "Strangers can appear in strange places.",  // Stranger Things
-            "Dragons are feared and revered creatures.",  // Game of Thrones
-            "Jim and Pam share a deep connection.",  // The Office
-            "Meredith Grey deals with hospital challenges.",  // Grey's Anatomy
-            "Narcos depicts the life of drug traffickers.",  // Narcos
-            "Mandalorian's mission involves protecting Baby Yoda.",  // The Mandalorian
-            "Black Mirror explores dark technological futures.",  // Black Mirror
-            "Geralt battles monsters in dangerous lands.",  // The Witcher
-            "Sheldon’s spot is his favorite place.",  // Big Bang Theory
-            "The island has many hidden secrets.",  // Lost
-            "Detectives seek clues to solve mysteries.",  // True Detective
-            "Michael Scott tries to be a good boss.",  // The Office
-            "Eleven uses powers to fight evil.",  // Stranger Things
-            "Winter brings challenges and harsh conditions.",  // Game of Thrones
-            "Breaking Bad portrays intense moral conflicts.",  // Breaking Bad
-            "Magical creatures exist in the wizarding world.",  // Harry Potter
-            "Avatar's world has diverse and magical creatures.",  // Avatar: The Last Airbender
-            "The Simpsons often feature humorous scenarios.",  // The Simpsons
-            "The Queen faces public and political duties.",  // The Crown
-            "Drug trafficking is a dangerous and illegal business.",  // Narcos
-            "The Mandalorian follows a strict code of honor.",  // The Mandalorian
-            "Technology impacts our daily lives dramatically.",  // Black Mirror
-            "The Witcher uses magic to fight monsters.",  // The Witcher
-            "Friends often support each other in life.",  // Friends
-            "Lost characters face many survival challenges.",  // Lost
-            "Detectives use intuition and evidence to solve cases.",  // True Detective
-            "Dwight loves to work on his beet farm.",  // The Office
-            "Doctors face tough decisions every day."  // Grey's Anatomy
+            "Have you seen the latest movie?",
+            "What is your favorite TV show?",
+            "Do you listen to rock music?",
+            "Can you recommend a good book?",
+            "Who is your favorite actor?",
+            "Let's watch a movie this weekend.",
+            "Did you like the recent concert?",
+            "What kind of books do you read?",
+            "Are you into playing video games?",
+            "Have you been to a theater show?",
+            "What's your favorite song right now?",
+            "Do you enjoy watching documentaries?",
+            "Can you name a classic film?",
+            "Who is your favorite musician?",
+            "Let's go to a comedy club.",
+            "Do you play any musical instruments?",
+            "What is your favorite movie genre?",
+            "Have you read any good novels?",
+            "Do you like superhero movies?",
+            "What's the best concert you've attended?",
+            "Who is your favorite director?",
+            "Do you enjoy animated films?",
+            "What video games do you play?",
+            "Have you watched any new shows?",
+            "Do you like going to the cinema?",
+            "What's your favorite book series?",
+            "Can you recommend a TV series?",
+            "Do you follow any YouTube channels?",
+            "What's the best movie you've seen?",
+            "Do you enjoy reading fiction books?",
+            "Who is your favorite comedian?",
+            "Do you like listening to podcasts?",
+            "What's your favorite movie quote?",
+            "Do you enjoy watching live sports?",
+            "What's the last book you read?",
+            "Do you like classical music concerts?",
+            "What's your favorite movie soundtrack?",
+            "Have you been to a music festival?",
+            "Do you watch any reality TV?",
+            "What's the best TV show ever?",
+            "Do you read graphic novels or comics?",
+            "What's your favorite video game series?",
+            "Do you enjoy watching stand-up comedy?",
+            "What's the last movie you watched?",
+            "Do you like fantasy or sci-fi books?",
+            "What's your favorite song to sing?",
+            "Do you follow celebrity news or gossip?",
+            "What's the best book you've read?",
+            "Do you enjoy playing board games?",
+            "What's your favorite movie from childhood?",
+            "Do you like romantic comedies?",
+            "What's the last concert you went to?",
+            "Do you watch movies in other languages?",
+            "What's your favorite TV show theme song?",
+            "Do you enjoy listening to live music?",
+            "What's your favorite book to recommend?",
+            "Do you like thriller or mystery novels?",
+            "What's your favorite movie snack?",
+            "Do you follow any sports teams?",
+            "What's the best live performance you've seen?",
+            "Do you enjoy watching musicals?",
+            "What's your favorite video game character?",
+            "Do you like reading biographies?",
+            "What's your favorite music album?",
+            "Do you enjoy attending film festivals?",
+            "What's your favorite scene in a movie?",
+            "Do you like horror movies?",
+            "What's the best play you've seen?",
+            "Do you enjoy karaoke nights?",
+            "What's your favorite author's latest book?",
+            "Do you like streaming services for movies?",
+            "What's your favorite live-action show?",
+            "Do you follow any TV series closely?",
+            "What's the best book-to-movie adaptation?",
+            "Do you enjoy classical or jazz music?",
+            "What's your favorite quote from a book?",
+            "Do you watch any cooking shows?",
+            "What's your favorite holiday movie?",
+            "Do you like documentaries or mockumentaries?",
+            "What's the best video game you've played?",
+            "Do you enjoy live theater performances?",
+            "What's your favorite animated TV show?",
+            "Do you like listening to audiobooks?",
+            "What's the best stand-up comedy special?",
+            "Do you follow any celebrity podcasts?",
+            "What's your favorite movie trilogy?",
+            "Do you enjoy binge-watching TV series?",
+            "What's your favorite TV show from childhood?",
+            "Do you like listening to indie music?",
+            "What's your favorite game to play online?",
+            "Do you enjoy watching award shows?",
+            "What's the best live show you've seen?",
+            "Do you follow any streaming platforms?",
+            "What's your favorite holiday tradition?",
+            "Do you like crime or detective shows?",
+            "What's the best video game soundtrack?",
+            "Do you enjoy reading fantasy novels?",
+            "What's your favorite late-night talk show?",
+            "Do you like watching game shows?"
         ));
         
          // <! ------------ Travel and places  ------------ !/>   
@@ -367,6 +415,7 @@ public class HomePage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        arrow = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         logoBtn = new javax.swing.JButton();
         helpBtn = new javax.swing.JButton();
@@ -487,7 +536,7 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 231, 200, 19));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/HomePage/title.png"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 5, 145, 75));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 5, 560, 60));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Poppins SemiBold", 0, 15)); // NOI18N
@@ -495,6 +544,9 @@ public class HomePage extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("start improving!");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 275, 190, 20));
+
+        arrow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/HomePage/arrow.png"))); // NOI18N
+        jPanel1.add(arrow, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Poppins SemiBold", 0, 15)); // NOI18N
@@ -614,26 +666,47 @@ public class HomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_startBtnActionPerformed
 
     private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
-            try {
+        helpBtn.setEnabled(false);        
+        try {
                 String url = "https://github.com/LovisottoSantiago/SayIt";
                 java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
             } catch (java.io.IOException e) {
                 System.out.println(e.getMessage());
             }
+            new Thread(() -> {
+            try {
+                // Delay for 3 seconds (5000 milliseconds)
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+            }
+            // Enable the button on the Event Dispatch Thread
+            SwingUtilities.invokeLater(() -> logoBtn.setEnabled(true));
+        }).start();            
     }//GEN-LAST:event_helpBtnActionPerformed
 
     private void logoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoBtnActionPerformed
-            try {
+        logoBtn.setEnabled(false);    
+        try {
                 String url = "https://github.com/LovisottoSantiago";
                 java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
             } catch (java.io.IOException e) {
                 System.out.println(e.getMessage());
             }
+                new Thread(() -> {
+            try {
+                // Delay for 3 seconds (5000 milliseconds)
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+            }
+            // Enable the button on the Event Dispatch Thread
+            SwingUtilities.invokeLater(() -> logoBtn.setEnabled(true));
+        }).start();
     }//GEN-LAST:event_logoBtnActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel arrow;
     private javax.swing.JLabel background;
     private javax.swing.JLabel buttonsBG;
     private javax.swing.JRadioButton dailyBtn;
