@@ -75,19 +75,19 @@ _________________
 <a name="screenshots"/>
 
 ## Screenshots
-### Home Page
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/ccb89c39-a88e-4e53-8c5a-8994034c90b3" width="600" height="467">
+  ### Home Page
+  <img src="https://github.com/user-attachments/assets/ccb89c39-a88e-4e53-8c5a-8994034c90b3" width="400" height="311.33">
 </div>
 
-### Phrase Page
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/59dcb9dd-cb6e-47de-b6fe-ca00e2506421" width="600" height="467">
+  ### Phrase Page
+  <img src="https://github.com/user-attachments/assets/59dcb9dd-cb6e-47de-b6fe-ca00e2506421" width="400" height="311.33">
 </div>
 
-### Test your mic (access through source files)
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/78bca530-a9ee-4dfc-8985-2d86a1a3b210" width="600" height="467">
+  ### Test your mic
+  <img src="https://github.com/user-attachments/assets/78bca530-a9ee-4dfc-8985-2d86a1a3b210" width="400" height="311.33">
 </div>
 _________________
 <a name="installation"/>
@@ -99,11 +99,11 @@ _________________
 * Windows OS (for running the .exe file)
 
 ### Steps to Install (for users)
-* 1. Clone the Repository
-* **git clone https://github.com/yourusername/say-it.git**
-* 2. Navigate to the Project Directory
+1. Clone the Repository
+* **git clone [https://github.com/yourusername/say-it.git](https://github.com/LovisottoSantiago/SayIt)**
+2. Navigate to the Project Directory
 * **cd say-it**
-* 3. Simply double-click the .exe file included in the release to launch the app.
+3. Simply double-click the .exe file included in the release to launch the app.
  _________________
 <a name="usage"/>
 
