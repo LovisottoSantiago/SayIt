@@ -76,9 +76,7 @@ _________________
 
 ## Screenshots
   ### Home Page
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/ccb89c39-a88e-4e53-8c5a-8994034c90b3" width="400" height="311.33">
-</div>
+  <img src="https://github.com/user-attachments/assets/ccb89c39-a88e-4e53-8c5a-8994034c90b3">
 
   ### Phrase Page
 <div align="center">
