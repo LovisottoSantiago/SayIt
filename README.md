@@ -1,4 +1,4 @@
-#Say it | Improve your speaking skills🗣️
+# Say it | Improve your speaking skills🗣️
 Welcome to Say it, an innovative desktop application designed to enhance your English speaking skills. Whether you're a language learner looking to gain confidence or someone who can understand English but struggles with spoken fluency, "Say it" is your go-to tool. With a simple yet effective interface, this app is all about turning your understanding of English into the ability to speak fluently and confidently.
 
 ## Table of Contents
@@ -16,10 +16,12 @@ _________________
 * [Contact](#contact)
 _________________
 <a name="overview"/>
+
 ## Overview
 "Say it" is designed with the primary goal of improving your spoken English. While it indirectly supports vocabulary enhancement, the main focus is on helping users practice and perfect their pronunciation and fluency in a safe, structured environment. The app uses a combination of random phrase generation, text-to-speech (TTS), and voice recognition to create a dynamic practice experience.
 
 <a name="features"/>
+
 ## Features
 ### 🎯 Targeted Phrase Generation
 Choose from five diverse categories—Entertainment, Travel and Places, Food and Drink, Daily Life, and Jobs and Careers. Each category contains a wide array of phrases tailored to real-life scenarios, helping you practice speaking in contexts that matter.
@@ -40,6 +42,7 @@ Receive instant feedback on your pronunciation accuracy.
 "Say it" is an open-source project, meaning it's designed to grow and evolve with contributions from developers like you. We're excited to see what the community can build upon this foundation.
 _________________
 <a name="how"/>
+
 ## How It Works
 * **Choose a Category:** Upon launching the app, select a category that interests you. Each category is packed with relevant phrases.
 
@@ -52,6 +55,7 @@ _________________
 * **Get Instant Feedback:** After you’ve spoken, the app compares your input with the original phrase using the Levenshtein distance algorithm and gives you instant feedback. Did you nail it, or is there room for improvement?
 _________________
 <a name="tech"/>
+
 ## Technologies Used
 **Java:** The backbone of the application, all core functionalities are implemented in Java.
 **NetBeans:** The Integrated Development Environment (IDE) used for coding and debugging.
@@ -61,6 +65,7 @@ _________________
 **FreeTTS Library:** Converts text phrases into audible speech.
 _________________
 <a name="java"/>
+
 ## Java Classes
 * Phrase: This class is responsible for generating random phrases. It pulls phrases from ArrayLists based on the selected category.
 * Score: Implements the algorithm for evaluating the user's spoken phrase against the generated phrase using the Levenshtein distance. This class determines if the user's pronunciation was accurate or if corrections are needed.
@@ -68,6 +73,7 @@ _________________
 * TextTTS: Converts the generated text phrases into speech using the TTS library. While the current implementation serves its purpose, future updates will bring significant improvements in voice quality and naturalness.
 _________________
 <a name="screenshots"/>
+
 ## Screenshots
 ### Home Page
 <div align="center">
@@ -85,6 +91,7 @@ _________________
 </div>
 _________________
 <a name="installation"/>
+  
 ## Installation
 ### Prerequisites
 * Java JDK (version 21 or higher)
@@ -99,6 +106,7 @@ _________________
 * 3. Simply double-click the .exe file included in the release to launch the app.
  _________________
 <a name="usage"/>
+
 ## Usage
 * **Daily Practice:** Set aside a few minutes each day to practice your speaking skills. Choose different categories to broaden your vocabulary and context understanding.
 * **Test Yourself:** Challenge yourself by attempting to speak without listening to the TTS first. See how well you can perform from memory.
@@ -116,6 +124,7 @@ New categories will be added to cover a wider range of topics.
 Future updates will aim to make the voice recognition process more flexible, reducing the strictness of phrase matching.
  _________________
 <a name="contributing"/>
+
  ## Contributing
 We welcome contributions from the community! Whether it's bug fixes, new features, or suggestions, your input is invaluable. Please follow these steps to contribute:
 1. Fork the Repository
@@ -126,6 +135,7 @@ We welcome contributions from the community! Whether it's bug fixes, new feature
 We'll review your pull request and get back to you as soon as possible.
  _________________
 <a name="contact"/>
+
  ## Contact
 If you have any questions, suggestions, or feedback, feel free to reach out:
 * **Email:** santiagolovisotto@gmail.com
