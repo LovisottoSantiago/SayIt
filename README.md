@@ -101,7 +101,7 @@ _________________
 
 ## **Download**
 You can download the latest version of **Say it** from the link below:
-[Download Say It!]("/LovisottoSantiago/SayIt/edit/main/SayIt.exe")
+(["/LovisottoSantiago/SayIt/edit/main/SayIt.exe"](https://github.com/LovisottoSantiago/SayIt/blob/main/SayIt.exe))
  _________________
 <a name="usage"/>
 
