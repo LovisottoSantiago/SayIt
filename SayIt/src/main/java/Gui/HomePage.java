@@ -638,29 +638,36 @@ public class HomePage extends javax.swing.JFrame {
         switch (startSelected) {
             case "entertainment" -> {
                 openPhrasePage(entertainmentPhrases);
+                score = scoreChosen(20);               
             }
             case "travel" -> {
                 sentenceList = travelPhrases;
                 openPhrasePage(sentenceList);
+                score = scoreChosen(17);    
             }
             case "food" -> {
                 sentenceList = foodPhrases;
                 openPhrasePage(sentenceList);
+                score = scoreChosen(17);    
             }
             case "daily" -> {
                 sentenceList = dailyStarters;
                 openPhrasePage(sentenceList);
+                score = scoreChosen(14);    
             }
             case "jobs" -> {
                 sentenceList = jobsStarters;
                 openPhrasePage(sentenceList);
+                score = scoreChosen(17);    
             }
             case null -> {
                 sentenceList = travelPhrases;
                 openPhrasePage(sentenceList);
+                score = scoreChosen(17);    
             }      
             default -> {
                 System.out.println("No class selected");
+                score = scoreChosen(20);    
             }                
         }
     }//GEN-LAST:event_startBtnActionPerformed
@@ -728,10 +735,16 @@ public class HomePage extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private int mouseX;
     private int mouseY;
+    
+    private ScoreSystem score;
 
     // Initialize before open method
     private PhrasePage phrasePage; 
     Voice voice1 = new Voice();
+    
+    public ScoreSystem scoreChosen(int value){
+           return new ScoreSystem(value);
+       }
     
     public void openPhrasePage(ArrayList<String> sentenceList) {
     // Check if the PhrasePage is already open
@@ -739,9 +752,9 @@ public class HomePage extends javax.swing.JFrame {
            phrasePage.dispose();  // Dispose of the existing instance
            phrasePage = null;     // Nullify the reference after disposal
        }    
+             
        // Create a new instance of PhrasePage
-       ScoreSystem scoreSystem = new ScoreSystem(20);
-       phrasePage = new PhrasePage(sentenceList, voice1, this, scoreSystem);
+       phrasePage = new PhrasePage(sentenceList, voice1, this, score);
        phrasePage.setVisible(true);
        phrasePage.setLocationRelativeTo(null);
        this.setVisible(false);
