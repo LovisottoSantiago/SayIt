@@ -98,10 +98,6 @@ _________________
 2. Navigate to the Project Directory
 * **cd say-it**
 3. Simply double-click the .exe file included in the release to launch the app.
-
-## **Download**
-You can download the latest version of **Say it** from the link below:
-(["/LovisottoSantiago/SayIt/edit/main/SayIt.exe"](https://github.com/LovisottoSantiago/SayIt/blob/main/SayIt.exe))
  _________________
 <a name="usage"/>
 
