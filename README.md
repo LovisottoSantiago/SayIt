@@ -137,7 +137,7 @@ If you have any questions, suggestions, or feedback, feel free to reach out:
 * **Email:** santiagolovisotto@gmail.com
  _________________
  
-Say it is an evolving project, and we’re thrilled to have you along for the journey. Happy practicing! 🎉
+Say it is an evolving project, and we’re thrilled to have you along for the journey. Happy speaking! 🎉
 
 
 
