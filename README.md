@@ -59,6 +59,8 @@ _________________
 ## Technologies Used
 **Java:** The backbone of the application, all core functionalities are implemented in Java.
 **NetBeans:** The Integrated Development Environment (IDE) used for coding and debugging.
+**Maven:** Used for managing project dependencies and building the application.
+**Launch4j:** Utilized for generating the Windows executable (.exe) from the Java application.
 **Figma:** Used for creating the initial design and UI mockups.
 **Levenshtein Distance Algorithm:** Utilized for evaluating the accuracy of the user's spoken input.
 **Sphinx:** An open-source voice recognition library tailored for precise command recognition.
