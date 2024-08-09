@@ -96,7 +96,7 @@ _________________
 
 ### Steps to Install (for users)
 1. Clone the Repository
-* **git clone [https://github.com/yourusername/say-it.git](https://github.com/LovisottoSantiago/SayIt)**
+* **git clone https://github.com/LovisottoSantiago/SayIt**
 2. Navigate to the Project Directory
 3. Simply double-click the .exe file included in the release to launch the app.
  _________________
