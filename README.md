@@ -57,22 +57,22 @@ _________________
 <a name="tech"/>
 
 ## Technologies Used
-**Java:** The backbone of the application, all core functionalities are implemented in Java.
-**NetBeans:** The Integrated Development Environment (IDE) used for coding and debugging.
-**Maven:** Used for managing project dependencies and building the application.
+* **Java:** The backbone of the application, all core functionalities are implemented in Java.
+* **NetBeans:** The Integrated Development Environment (IDE) used for coding and debugging.
+* **Maven:** Used for managing project dependencies and building the application.
 **Launch4j:** Utilized for generating the Windows executable (.exe) from the Java application.
-**Figma:** Used for creating the initial design and UI mockups.
-**Levenshtein Distance Algorithm:** Utilized for evaluating the accuracy of the user's spoken input.
-**Sphinx:** An open-source voice recognition library tailored for precise command recognition.
-**FreeTTS Library:** Converts text phrases into audible speech.
+* **Figma:** Used for creating the initial design and UI mockups.
+* **Levenshtein Distance Algorithm:** Utilized for evaluating the accuracy of the user's spoken input.
+* **Sphinx:** An open-source voice recognition library tailored for precise command recognition.
+* **FreeTTS Library:** Converts text phrases into audible speech.
 _________________
 <a name="java"/>
 
 ## Java Classes
-* Phrase: This class is responsible for generating random phrases. It pulls phrases from ArrayLists based on the selected category.
-* Score: Implements the algorithm for evaluating the user's spoken phrase against the generated phrase using the Levenshtein distance. This class determines if the user's pronunciation was accurate or if corrections are needed.
-* Voice: Handles the voice recognition process using the Sphinx library. It captures the user's spoken input and prepares it for comparison.
-* TextTTS: Converts the generated text phrases into speech using the TTS library. While the current implementation serves its purpose, future updates will bring significant improvements in voice quality and naturalness.
+* **Phrase:** This class is responsible for generating random phrases. It pulls phrases from ArrayLists based on the selected category.
+* **Score:** Implements the algorithm for evaluating the user's spoken phrase against the generated phrase using the Levenshtein distance. This class determines if the user's pronunciation was accurate or if corrections are needed.
+* **Voice:** Handles the voice recognition process using the Sphinx library. It captures the user's spoken input and prepares it for comparison.
+* **TextTTS:** Converts the generated text phrases into speech using the TTS library. While the current implementation serves its purpose, future updates will bring significant improvements in voice quality and naturalness.
 _________________
 <a name="screenshots"/>
 
@@ -98,7 +98,6 @@ _________________
 1. Clone the Repository
 * **git clone [https://github.com/yourusername/say-it.git](https://github.com/LovisottoSantiago/SayIt)**
 2. Navigate to the Project Directory
-* **cd say-it**
 3. Simply double-click the .exe file included in the release to launch the app.
  _________________
 <a name="usage"/>
