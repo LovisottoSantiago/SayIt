@@ -90,7 +90,7 @@ _________________
   
 ## Installation
 ### Prerequisites
-* Java JDK (version 21 or higher)
+* Java JDK (version 22 or higher)
 * NetBeans IDE (optional, for developers)
 * Windows OS (for running the .exe file)
 
