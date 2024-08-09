@@ -79,14 +79,10 @@ _________________
   <img src="https://github.com/user-attachments/assets/ccb89c39-a88e-4e53-8c5a-8994034c90b3">
 
   ### Phrase Page
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/59dcb9dd-cb6e-47de-b6fe-ca00e2506421" width="400" height="311.33">
-</div>
+ <img src="https://github.com/user-attachments/assets/59dcb9dd-cb6e-47de-b6fe-ca00e2506421">
 
 ### Test your mic
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/78bca530-a9ee-4dfc-8985-2d86a1a3b210" width="400" height="311.33">
-</div>
+<img src="https://github.com/user-attachments/assets/78bca530-a9ee-4dfc-8985-2d86a1a3b210">
 _________________
 <a name="installation"/>
   
