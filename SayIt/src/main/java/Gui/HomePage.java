@@ -632,23 +632,24 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jobsBtnActionPerformed
 
-    
+
     private void startBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBtnActionPerformed
         // Update sentenceStarters and sentenceFinishers based on the selected button
+        //score = scoreChosen(50);   
         switch (startSelected) {
             case "entertainment" -> {
                 openPhrasePage(entertainmentPhrases);
-                score = scoreChosen(20);               
+                score = scoreChosen(22);               
             }
             case "travel" -> {
                 sentenceList = travelPhrases;
                 openPhrasePage(sentenceList);
-                score = scoreChosen(17);    
+                score = scoreChosen(16);    
             }
             case "food" -> {
                 sentenceList = foodPhrases;
                 openPhrasePage(sentenceList);
-                score = scoreChosen(17);    
+                score = scoreChosen(16);    
             }
             case "daily" -> {
                 sentenceList = dailyStarters;
@@ -658,16 +659,14 @@ public class HomePage extends javax.swing.JFrame {
             case "jobs" -> {
                 sentenceList = jobsStarters;
                 openPhrasePage(sentenceList);
-                score = scoreChosen(17);    
+                score = scoreChosen(16);    
             }
             case null -> {
                 sentenceList = travelPhrases;
                 openPhrasePage(sentenceList);
-                score = scoreChosen(17);    
+                score = scoreChosen(16);    
             }      
             default -> {
-                System.out.println("No class selected");
-                score = scoreChosen(20);    
             }                
         }
     }//GEN-LAST:event_startBtnActionPerformed
