@@ -347,6 +347,54 @@ public class HomePage extends javax.swing.JFrame {
             "What kind of support is available for new hires?"
         ));
         
+         // <! ------------ Stoicism mode  ------------ !/>   
+        private final ArrayList<String> stoicPhrases = new ArrayList<>(Arrays.asList(
+    "Endure and persist; pain will pass.",
+    "The obstacle is the way.",
+    "Be a good man, not argue one.",
+    "We suffer more in imagination.",
+    "Do not do wrong; do not lie.",
+    "Master yourself to be truly free.",
+    "Fate leads the willing.",
+    "Fear not death, but not living.",
+    "No man was ever wise by chance.",
+    "Difficulties strengthen the mind.",
+    "Calm is the highest achievement.",
+    "Accept your destiny as it is.",
+    "Few wants lead to wealth.",
+    "Glory lies in overcoming difficulty.",
+    "Be content to seem who you are.",
+    "Wisdom sees life as a problem.",
+    "Control your thoughts; master yourself.",
+    "Your strength is within you.",
+    "Conquer yourself; be mighty.",
+    "Embark your philosophy in actions.",
+    "Life is short; cherish the present.",
+    "React wisely to events.",
+    "Happiness lies in the present.",
+    "Revenge is not being like your enemy.",
+    "Wishing aligns with reality.",
+    "Thoughts color the soul.",
+    "Be what you wish to be.",
+    "Prepare and meet opportunity.",
+    "Your worth lies in your ambitions.",
+    "You're a soul carrying a corpse.",
+    "Fear not what you must do.",
+    "Only change endures.",
+    "Improve by embracing foolishness.",
+    "Mind power is unconquerable.",
+    "Circumstances reveal true character.",
+    "Live in the present, not the future.",
+    "Freedom is in controlling yourself.",
+    "Face the future with reason.",
+    "Begin living immediately.",
+    "Life is shaped by your reaction.",
+    "Trials perfect a man.",
+    "Embody philosophy, don't explain it.",
+    "All we see is perspective."
+));
+
+        
         
     public HomePage() {
        setUndecorated(true);
