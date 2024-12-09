@@ -133,7 +133,7 @@ We'll review your pull request and get back to you as soon as possible.
 
  ## Contact
 If you have any questions, suggestions, or feedback, feel free to reach out:
-* **Email:** santiagolovisotto@gmail.com
+* **Email:** backendlovi@gmail.com
  _________________
  
 Say it is an evolving project, and we’re thrilled to have you along for the journey. Happy speaking! 🎉
